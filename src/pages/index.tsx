@@ -37,7 +37,9 @@ export default function Home() {
                     Community Governance Sessions
                   </p>
                 </div>
-                <Button size="lg" className="w-full bg-white text-black hover:bg-white/90 font-semibold px-8 py-6 text-lg">
+                <Button size="lg" 
+                  className="w-full bg-white text-black hover:bg-white/90 font-semibold px-8 py-6 text-lg"
+                  onClick={() => window.open('https://us06web.zoom.us/meeting/register/-RJdfipITwuUDtXDxUmBtw', '_blank', 'noopener,noreferrer')}>
                   Sign Up
                 </Button>
               </div>
