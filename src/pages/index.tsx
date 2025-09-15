@@ -26,27 +26,35 @@ export default function Home() {
             </h1>
             <div className="mt-8 flex justify-center md:justify-end">
               <div className="flex flex-col gap-6">
-                <div className="rounded-lg bg-black/30 backdrop-blur-sm p-4">
+                <div className="rounded-lg bg-black/30 p-4 backdrop-blur-sm">
                   <p className="text-center text-xl font-semibold text-white md:text-right">
                     Launching September 18 • 14:30 UTC
                   </p>
-                  <p className="text-center text-xl text-white mt-4 md:text-right">
+                  <p className="mt-4 text-center text-xl text-white md:text-right">
                     Join Open Spaces weekly
                   </p>
-                  <p className="text-center text-xl font-light text-white/95 mt-2 md:text-right">
+                  <p className="mt-2 text-center text-xl font-light text-white/95 md:text-right">
                     Community Governance Sessions
                   </p>
                 </div>
-                <Button size="lg" 
-                  className="w-full bg-white text-black hover:bg-white/90 font-semibold px-8 py-6 text-lg"
-                  onClick={() => window.open('https://us06web.zoom.us/meeting/register/-RJdfipITwuUDtXDxUmBtw', '_blank', 'noopener,noreferrer')}>
+                <Button
+                  size="lg"
+                  className="w-full bg-white px-8 py-6 text-lg font-semibold text-black hover:bg-white/90"
+                  onClick={() =>
+                    window.open(
+                      "https://us06web.zoom.us/meeting/register/-RJdfipITwuUDtXDxUmBtw",
+                      "_blank",
+                      "noopener,noreferrer",
+                    )
+                  }
+                >
                   Sign Up
                 </Button>
               </div>
             </div>
           </div>
         </div>
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10">
+        <div className="absolute bottom-8 left-1/2 z-10 -translate-x-1/2">
           <div className="flex gap-6">
             <a
               href="https://x.com/gimbalabs"
@@ -58,7 +66,7 @@ export default function Home() {
               <Twitter className="h-6 w-6 text-white" />
             </a>
             <a
-              href="https://discord.gg/aYFF2UzDXS"
+              href="https://discord.gg/BvwrpTCcre"
               target="_blank"
               rel="noopener noreferrer"
               className="rounded-full bg-white/10 p-3 backdrop-blur-sm transition-all hover:bg-white/20"
