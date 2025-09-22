@@ -57,10 +57,8 @@ export default function Home() {
         </div>
         <div className="absolute bottom-8 left-1/2 z-10 -translate-x-1/2">
           <div className="flex gap-6">
-            <a
-              href="https://teamup.com/ksby8g73om81ffxs8s"
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              href="/calendar"
               className="rounded-full bg-white/10 p-3 backdrop-blur-sm transition-all hover:bg-white/20"
               aria-label="Calendar"
             >
@@ -77,7 +75,7 @@ export default function Home() {
                 <line x1="8" y1="2" x2="8" y2="6"></line>
                 <line x1="3" y1="10" x2="21" y2="10"></line>
               </svg>
-            </a>
+            </Link>
             <a
               href="https://plutuspbl.io/"
               target="_blank"
