@@ -8,7 +8,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Gimbalabs Season 6</title>
+        <title>Gimbalabs Season Builder Season</title>
         <meta name="description" content="Welcome to Gimbalabs Season 6" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -21,36 +21,44 @@ export default function Home() {
           priority
         />
         <div className="relative z-10 flex min-h-screen items-center justify-center md:justify-end">
-          <div className="w-full px-4 md:w-1/2 md:pr-8 lg:pr-16">
-            <h1 className="text-center text-6xl font-bold tracking-tight text-white drop-shadow-2xl sm:text-7xl md:text-right md:text-8xl">
-              Gimbalabs Season 6
+          <div className="w-full px-4 md:w-1/2 md:pr-8 lg:pr-16 flex flex-col items-center justify-center h-full">
+            <h1 className="text-center text-6xl font-bold tracking-tight text-white drop-shadow-2xl sm:text-7xl md:text-8xl">
+              Gimbalabs Builder Season
             </h1>
-            <div className="mt-8 flex justify-center md:justify-end">
-              <div className="flex flex-col gap-6">
-                <div className="rounded-lg bg-black/30 p-4 backdrop-blur-sm">
-                  <p className="text-center text-xl font-semibold text-white md:text-right">
-                    Launching September 18 • 14:30 UTC
-                  </p>
-                  <p className="mt-4 text-center text-xl text-white md:text-right">
-                    Join Open Spaces weekly
-                  </p>
-                  <p className="mt-2 text-center text-xl font-light text-white/95 md:text-right">
-                    Community Governance Sessions
-                  </p>
-                </div>
-                <Button
-                  size="lg"
-                  className="w-full bg-white px-8 py-6 text-lg font-semibold text-black hover:bg-white/90"
-                  onClick={() =>
-                    window.open(
-                      "https://us06web.zoom.us/meeting/register/-RJdfipITwuUDtXDxUmBtw",
-                      "_blank",
-                      "noopener,noreferrer",
-                    )
-                  }
-                >
-                  Sign Up
-                </Button>
+            <div className="mt-8 flex flex-col items-center w-full">
+              <div className="rounded-lg bg-black/30 py-4 px-10 backdrop-blur-sm">
+                <p className="text-left text-xl sm:text-2xl font-semibold text-white">
+                  Three ways to participate:
+                </p>
+                <ul className="mt-3 mx-auto flex w-fit flex-col gap-2 text-base sm:text-lg text-white">
+                  <li>
+                    <Link
+                      href="/piece-of-pie"
+                      className="inline-flex items-center gap-2 rounded-md border border-white/35 bg-white/10 px-3 py-1.5 transition hover:bg-white/20 hover:border-white/60 hover:underline"
+                    >
+                      <span className="inline-flex w-6 justify-center">🥧</span>
+                      <span>Piece of Pie Hackathon</span>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/tooling"
+                      className="inline-flex items-center gap-2 rounded-md border border-white/35 bg-white/10 px-3 py-1.5 transition hover:bg-white/20 hover:border-white/60 hover:underline"
+                    >
+                      <span className="inline-flex w-6 justify-center">🛠️</span>
+                      <span>Cardano Community Feedback Tooling</span>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/bounties-platform"
+                      className="inline-flex items-center gap-2 rounded-md border border-white/35 bg-white/10 px-3 py-1.5 transition hover:bg-white/20 hover:border-white/60 hover:underline"
+                    >
+                      <span className="inline-flex w-6 justify-center">💰</span>
+                      <span>Cardano Bounties Platform</span>
+                    </Link>
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
