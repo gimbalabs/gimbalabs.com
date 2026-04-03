@@ -38,6 +38,60 @@ const css = `
     overflow-x: hidden;
   }
 
+  /* TEMP COMING SOON OVERLAY START - DELETE LATER */
+  .page-content-blurred {
+    filter: blur(8px);
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .coming-soon-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background: rgba(15, 23, 42, 0.35);
+  }
+
+  .coming-soon-modal {
+    width: min(560px, 100%);
+    border: 3px solid var(--border);
+    border-radius: 20px;
+    background: var(--whipped-cream);
+    box-shadow: 8px 8px 0px var(--shadow);
+    padding: 32px 28px;
+    text-align: center;
+  }
+
+  .coming-soon-modal p {
+    margin: 0;
+  }
+
+  .coming-soon-kicker {
+    margin-bottom: 10px !important;
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #334155;
+  }
+
+  .coming-soon-title {
+    margin: 0 0 12px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(2rem, 6vw, 3rem);
+    line-height: 1.1;
+  }
+
+  .coming-soon-copy {
+    font-size: 1.05rem;
+    color: #475569;
+  }
+  /* TEMP COMING SOON OVERLAY END - DELETE LATER */
+
   a { 
     color: inherit; 
     text-decoration: none;
@@ -470,67 +524,69 @@ export default function PieceOfPie() {
         <style dangerouslySetInnerHTML={{ __html: css }} />
       </Head>
 
-      {/* NAVIGATION */}
-      <div className="wrap topbar">
-        <div className="brand">
-          <div className="brand-mark">🥧</div>
-          <div>Piece Of Pie Hackathon by Gimbalabs</div>
+      {/* TEMP COMING SOON OVERLAY START - DELETE LATER */}
+      <div className="page-content-blurred" aria-hidden="true">
+        {/* NAVIGATION */}
+        <div className="wrap topbar">
+          <div className="brand">
+            <div className="brand-mark">🥧</div>
+            <div>Piece Of Pie Hackathon by Gimbalabs</div>
+          </div>
+          <nav className="nav">
+            <a href="#rules">Rules</a>
+            <a href="#timeline">Timeline</a>
+            <a href="#register">Register</a>
+          </nav>
         </div>
-        <nav className="nav">
-          <a href="#rules">Rules</a>
-          <a href="#timeline">Timeline</a>
-          <a href="#register">Register</a>
-        </nav>
-      </div>
 
-      {/* HERO SECTION */}
-      <header>
-        <div className="wrap hero">
-          <section className="panel hero-copy">
-            <div className="eyebrow">Public progress • Clear rules • Real output</div>
-            <h1>Build in public.<br />Qualify through consistency.</h1>
-            <p className="lead">
-              Piece Of Pie is a 12-week, participation-driven hackathon. This is not about judges picking favorites.
-              It is about meeting clear requirements, showing visible effort, and earning your slice by doing the work.
-            </p>
-            <div className="hero-actions">
-              <a className="btn btn-primary" href="#rules">Read the rules first</a>
-              <a className="btn btn-secondary" href="#register">Go to registration</a>
-            </div>
-          </section>
+        {/* HERO SECTION */}
+        <header>
+          <div className="wrap hero">
+            <section className="panel hero-copy">
+              <div className="eyebrow">Public progress • Clear rules • Real output</div>
+              <h1>Build in public.<br />Qualify through consistency.</h1>
+              <p className="lead">
+                Piece Of Pie is a 12-week, participation-driven hackathon. This is not about judges picking favorites.
+                It is about meeting clear requirements, showing visible effort, and earning your slice by doing the work.
+              </p>
+              <div className="hero-actions">
+                <a className="btn btn-primary" href="#rules">Read the rules first</a>
+                <a className="btn btn-secondary" href="#register">Go to registration</a>
+              </div>
+            </section>
 
-          <aside className="panel hero-side">
-            <div className="sticker">rules first!</div>
-            <h2 style={{ margin: '0 0 4px', fontFamily: "'Space Grotesk',sans-serif" }}>Before anyone registers</h2>
-            <p style={{ margin: 0, fontWeight: 600, color: '#333' }}>
-              Teams can be solo or multi-person, but every participant must be named.
-              Each project must have one official public repo, and every participant can only be in one project.
-            </p>
-            <div className="mini-grid">
-              <div className="mini">
-                <strong>Duration</strong>
-                12 weeks total
+            <aside className="panel hero-side">
+              <div className="sticker">rules first!</div>
+              <h2 style={{ margin: '0 0 4px', fontFamily: "'Space Grotesk',sans-serif" }}>Before anyone registers</h2>
+              <p style={{ margin: 0, fontWeight: 600, color: '#333' }}>
+                Teams can be solo or multi-person, but every participant must be named.
+                Each project must have one official public repo, and every participant can only be in one project.
+              </p>
+              <div className="mini-grid">
+                <div className="mini">
+                  <strong>Duration</strong>
+                  12 weeks total
+                </div>
+                <div className="mini">
+                  <strong>Enrollment</strong>
+                  Weeks 1–2 only
+                </div>
+                <div className="mini">
+                  <strong>Repo</strong>
+                  Public and official
+                </div>
+                <div className="mini">
+                  <strong>Progress</strong>
+                  1 public tweet every week minimum
+                </div>
               </div>
-              <div className="mini">
-                <strong>Enrollment</strong>
-                Weeks 1–2 only
-              </div>
-              <div className="mini">
-                <strong>Repo</strong>
-                Public and official
-              </div>
-              <div className="mini">
-                <strong>Progress</strong>
-                1 public tweet every week minimum
-              </div>
-            </div>
-          </aside>
-        </div>
-      </header>
+            </aside>
+          </div>
+        </header>
 
-      {/* MAIN CONTENT */}
-      <main>
-        <div className="wrap">
+        {/* MAIN CONTENT */}
+        <main>
+          <div className="wrap">
 
           {/* RULES SECTION */}
           <section id="rules" className="section panel">
@@ -692,13 +748,25 @@ export default function PieceOfPie() {
             </div>
           </section>
 
-        </div>
-      </main>
+          </div>
+        </main>
 
-      {/* FOOTER */}
-      <footer>
-        Piece Of Pie Hackathon by Gimbalabs · Built around clear rules, public progress, and verifiable participation.
-      </footer>
+        {/* FOOTER */}
+        <footer>
+          Piece Of Pie Hackathon by Gimbalabs · Built around clear rules, public progress, and verifiable participation.
+        </footer>
+      </div>
+
+      <div className="coming-soon-overlay" role="dialog" aria-modal="true" aria-label="Coming soon">
+        <div className="coming-soon-modal">
+          <p className="coming-soon-kicker">Gimbalabs</p>
+          <h2 className="coming-soon-title">Coming Soon</h2>
+          <p className="coming-soon-copy">
+            This page is currently in progress.
+          </p>
+        </div>
+      </div>
+      {/* TEMP COMING SOON OVERLAY END - DELETE LATER */}
     </>
   );
 }
