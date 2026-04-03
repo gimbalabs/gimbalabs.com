@@ -1,7 +1,6 @@
 import Head from "next/head";
 import Image from "next/image";
 import { Button } from "~/components/ui/button";
-import { X } from "lucide-react";
 import Link from "next/link";
 
 export default function Home() {
@@ -205,7 +204,14 @@ export default function Home() {
               className="rounded-full bg-white/10 p-3 backdrop-blur-sm transition-all hover:bg-white/20"
               aria-label="X"
             >
-              <X className="h-6 w-6 text-white" />
+              <svg
+                className="h-6 w-6 text-white"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M18.901 1.153h3.68l-8.039 9.188L24 22.846h-7.406l-5.8-7.584l-6.639 7.584H.474l8.596-9.826L0 1.154h7.594l5.243 6.932L18.901 1.153zm-1.291 19.49h2.039L6.486 3.24H4.298L17.61 20.643z" />
+              </svg>
             </a>
           </div>
         </div>
