@@ -375,6 +375,22 @@ const css = `
     margin: 0 0 14px;
     font-family: 'Space Grotesk', sans-serif;
     font-size: 1.25rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .rule-group-icon {
+    width: 40px;
+    height: 40px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    border: 2px solid var(--border);
+    background: var(--whipped-cream);
+    font-size: 1.1rem;
+    line-height: 1;
+    flex-shrink: 0;
   }
 
   .rule {
@@ -750,7 +766,10 @@ export default function PieceOfPie() {
             </div>
 
             <div className="rule-group rule-group--builder">
-              <h3 className="rule-group-title">🛠️ The Builder Pie</h3>
+              <h3 className="rule-group-title">
+                <span className="rule-group-icon" aria-hidden="true">🛠️</span>
+                <span>The Builder Pie</span>
+              </h3>
               <div className="rules-grid">
                 <article className="rule">
                   <div className="rule-num">1</div>
@@ -839,7 +858,10 @@ export default function PieceOfPie() {
             </div>
 
             <div className="rule-group rule-group--real-use">
-              <h3 className="rule-group-title">🚀 The Real User Pie</h3>
+              <h3 className="rule-group-title">
+                <span className="rule-group-icon" aria-hidden="true">🚀</span>
+                <span>The Real User Pie</span>
+              </h3>
               <div className="rules-grid">
                 <article className="rule">
                   <div className="rule-num">1</div>
@@ -862,7 +884,10 @@ export default function PieceOfPie() {
             </div>
 
             <div className="rule-group rule-group--feedback">
-              <h3 className="rule-group-title">🗣️ The Feedback Pie</h3>
+              <h3 className="rule-group-title">
+                <span className="rule-group-icon" aria-hidden="true">🗣️</span>
+                <span>The Feedback Pie</span>
+              </h3>
               <div className="rules-grid">
                 <article className="rule">
                   <div className="rule-num">1</div>
