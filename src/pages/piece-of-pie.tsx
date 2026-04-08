@@ -38,60 +38,6 @@ const css = `
     overflow-x: hidden;
   }
 
-  /* TEMP COMING SOON OVERLAY START - DELETE LATER */
-  .page-content-blurred {
-    filter: blur(8px);
-    pointer-events: none;
-    user-select: none;
-  }
-
-  .coming-soon-overlay {
-    position: fixed;
-    inset: 0;
-    z-index: 9999;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 24px;
-    background: rgba(15, 23, 42, 0.35);
-  }
-
-  .coming-soon-modal {
-    width: min(560px, 100%);
-    border: 3px solid var(--border);
-    border-radius: 20px;
-    background: var(--whipped-cream);
-    box-shadow: 8px 8px 0px var(--shadow);
-    padding: 32px 28px;
-    text-align: center;
-  }
-
-  .coming-soon-modal p {
-    margin: 0;
-  }
-
-  .coming-soon-kicker {
-    margin-bottom: 10px !important;
-    font-size: 0.9rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: #334155;
-  }
-
-  .coming-soon-title {
-    margin: 0 0 12px;
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: clamp(2rem, 6vw, 3rem);
-    line-height: 1.1;
-  }
-
-  .coming-soon-copy {
-    font-size: 1.05rem;
-    color: #475569;
-  }
-  /* TEMP COMING SOON OVERLAY END - DELETE LATER */
-
   a { 
     color: inherit; 
     text-decoration: none;
@@ -334,6 +280,41 @@ const css = `
     transform: rotate(-2deg);
   }
 
+  /* --- PIE SHARES --- */
+  .pie-share-intro {
+    margin: 6px 0 0;
+    font-size: 1.05rem;
+    color: #4a4a4a;
+    max-width: 70ch;
+  }
+
+  .pie-share-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+    margin-top: 20px;
+  }
+
+  .pie-share-card {
+    background: white;
+    border: 3px solid var(--border);
+    border-radius: 16px;
+    padding: 18px;
+    box-shadow: 5px 5px 0px var(--shadow);
+  }
+
+  .pie-share-card h3 {
+    margin: 0 0 10px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.1rem;
+    line-height: 1.3;
+  }
+
+  .pie-share-card p {
+    margin: 0;
+    color: #4a4a4a;
+  }
+
   /* --- CORE RULES --- */
   .rules-intro {
     display: grid;
@@ -524,8 +505,6 @@ export default function PieceOfPie() {
         <style dangerouslySetInnerHTML={{ __html: css }} />
       </Head>
 
-      {/* TEMP COMING SOON OVERLAY START - DELETE LATER */}
-      <div className="page-content-blurred" aria-hidden="true">
         {/* NAVIGATION */}
         <div className="wrap topbar">
           <div className="brand">
@@ -587,6 +566,43 @@ export default function PieceOfPie() {
         {/* MAIN CONTENT */}
         <main>
           <div className="wrap">
+
+          {/* PIE SHARES */}
+          <section className="section panel">
+            <div className="section-head">
+              <div>
+                <h2 className="section-title">How the Pie Gets Shared</h2>
+                <p className="pie-share-intro">Each pie rewards a different kind of contribution: building consistently, proving real-world value, and helping other teams get better.</p>
+              </div>
+              <div className="priority-pill">10,000 + 2,000 + 1,000 ADA</div>
+            </div>
+
+            <div className="pie-share-grid">
+              <article className="pie-share-card">
+                <h3>🥧 Builder Pie — 10,000 ADA (equal split)</h3>
+                <p>
+                  Build one project over 12 weeks and share your progress publicly each week.
+                  Earn a share of the pie by showing up consistently and shipping something real.
+                </p>
+              </article>
+
+              <article className="pie-share-card">
+                <h3>🥧 Real User Pie — 2,000 ADA (equal split)</h3>
+                <p>
+                  Get at least one real paying user for your project.
+                  Earn a share by proving real-world value beyond friends and family.
+                </p>
+              </article>
+
+              <article className="pie-share-card">
+                <h3>🥧 Feedback Pie — 1,000 ADA (credit-weighted)</h3>
+                <p>
+                  Help other builders by giving live, recorded feedback sessions.
+                  Earn based on how much useful feedback you contribute.
+                </p>
+              </article>
+            </div>
+          </section>
 
           {/* RULES SECTION */}
           <section id="rules" className="section panel">
@@ -755,18 +771,6 @@ export default function PieceOfPie() {
         <footer>
           Piece Of Pie Hackathon by Gimbalabs · Built around clear rules, public progress, and verifiable participation.
         </footer>
-      </div>
-
-      <div className="coming-soon-overlay" role="dialog" aria-modal="true" aria-label="Coming soon">
-        <div className="coming-soon-modal">
-          <p className="coming-soon-kicker">Gimbalabs</p>
-          <h2 className="coming-soon-title">Coming Soon</h2>
-          <p className="coming-soon-copy">
-            This page is currently in progress.
-          </p>
-        </div>
-      </div>
-      {/* TEMP COMING SOON OVERLAY END - DELETE LATER */}
     </>
   );
 }
