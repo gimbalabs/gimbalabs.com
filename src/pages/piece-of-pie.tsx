@@ -349,6 +349,22 @@ const css = `
 
   .rule-group {
     margin-top: 28px;
+    border: 3px solid var(--border);
+    border-radius: 20px;
+    padding: 18px;
+    box-shadow: 5px 5px 0px var(--shadow);
+  }
+
+  .rule-group--builder {
+    background: rgba(247, 197, 72, 0.22);
+  }
+
+  .rule-group--real-use {
+    background: rgba(112, 214, 255, 0.24);
+  }
+
+  .rule-group--feedback {
+    background: rgba(244, 172, 183, 0.24);
   }
 
   .rule-group:first-of-type {
@@ -733,7 +749,7 @@ export default function PieceOfPie() {
               </div>
             </div>
 
-            <div className="rule-group">
+            <div className="rule-group rule-group--builder">
               <h3 className="rule-group-title">🛠️ The Builder Pie</h3>
               <div className="rules-grid">
                 <article className="rule">
@@ -822,7 +838,7 @@ export default function PieceOfPie() {
               </div>
             </div>
 
-            <div className="rule-group">
+            <div className="rule-group rule-group--real-use">
               <h3 className="rule-group-title">🚀 The Real User Pie</h3>
               <div className="rules-grid">
                 <article className="rule">
@@ -845,7 +861,7 @@ export default function PieceOfPie() {
               </div>
             </div>
 
-            <div className="rule-group">
+            <div className="rule-group rule-group--feedback">
               <h3 className="rule-group-title">🗣️ The Feedback Pie</h3>
               <div className="rules-grid">
                 <article className="rule">
