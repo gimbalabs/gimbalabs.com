@@ -946,33 +946,27 @@ export default function PieceOfPie() {
             {/* REGISTRATION */}
             <div id="register" className="panel">
               <h2 className="section-title">Registration</h2>
-              <p className="section-sub">Registration should happen through a Google Form, not a custom on-site form.</p>
+              <p className="section-sub">Submit one registration form per project during the enrollment window.</p>
 
-              <div className="success" style={{ marginTop: '14px' }}>
-                <strong style={{ color: '#2e7d32' }}>What the Google Form must require</strong>
-                <ul className="checklist">
-                  <li>Project title</li>
-                  <li>Primary contact name</li>
-                  <li><strong>All participant names</strong></li>
-                  <li>Contact email</li>
-                  <li>Short project summary</li>
-                  <li><strong>Official public Git repository link</strong></li>
-                  <li>Agreement to weekly tweet requirement</li>
-                  <li>Agreement to one-project-per-participant rule</li>
-                  <li>Feedback session plan</li>
-                </ul>
+              <div className="timeline" style={{ marginTop: '14px' }}>
+                <div className="timeline-item">
+                  <strong>Step 1 — Prepare your project info</strong>
+                  Finalize your project title and team members, create an empty public GitHub repo, and keep the repo link ready before you begin.
+                </div>
+                <div className="timeline-item">
+                  <strong>Step 2 — Complete the registration form</strong>
+                  Submit the official registration form with accurate information for every participant in your project.
+                </div>
+                <div className="timeline-item">
+                  <strong>Step 3 — Keep your proof public</strong>
+                  Ensure your repository and weekly progress tweets remain public for verification throughout the hackathon.
+                </div>
               </div>
-
-              <div className="mono-box">Example official repo: https://github.com/your-org/your-project</div>
 
               <div className="footer-actions">
-                <a className="btn btn-primary" href="https://forms.google.com" target="_blank" rel="noopener noreferrer">Open Google Form</a>
+                <a className="btn btn-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSc5O56y5Lj5xnDKPRpzev_2eYtm4U4Ju8hnpPMT3Sm56WPr7Q/viewform" target="_blank" rel="noopener noreferrer">Register</a>
                 <a className="btn btn-secondary" href="https://github.com" target="_blank" rel="noopener noreferrer">Create empty public repo</a>
               </div>
-
-              <p className="section-sub" style={{ marginTop: '16px', fontSize: '0.9rem' }}>
-                Replace the placeholder Google Form and GitHub links with the real ones before publishing.
-              </p>
             </div>
           </section>
 
