@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import Head from 'next/head';
 
 const css = `
@@ -346,6 +347,20 @@ const css = `
     gap: 20px;
   }
 
+  .rule-group {
+    margin-top: 28px;
+  }
+
+  .rule-group:first-of-type {
+    margin-top: 0;
+  }
+
+  .rule-group-title {
+    margin: 0 0 14px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.25rem;
+  }
+
   .rule {
     background: white;
     border: 3px solid var(--border);
@@ -460,6 +475,53 @@ const css = `
     box-shadow: 3px 3px 0px var(--shadow);
   }
 
+  .tweet-card {
+    grid-column: 1 / -1;
+    height: 100%;
+    display: grid;
+    grid-template-columns: minmax(0, 1.35fr) minmax(260px, 0.65fr);
+    gap: 12px 16px;
+    align-items: start;
+  }
+
+  .tweet-card-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    grid-column: 1 / -1;
+  }
+
+  .tweet-card-head strong {
+    color: var(--text);
+  }
+
+  .tweet-help {
+    margin: 10px 0 0;
+    color: #444;
+    grid-column: 1 / -1;
+  }
+
+  .tweet-template {
+    margin-top: 12px;
+    white-space: pre-wrap;
+    line-height: 1.5;
+    grid-column: 1;
+  }
+
+  .tweet-copy-btn {
+    padding: 8px 14px;
+    font-size: 0.9rem;
+    background: var(--crust-yellow);
+  }
+
+  .tweet-card .hashtag-row {
+    grid-column: 2;
+    margin-top: 12px;
+    align-self: start;
+  }
+
   .footer-actions {
     display: flex;
     gap: 12px;
@@ -486,6 +548,15 @@ const css = `
     .split {
       grid-template-columns: 1fr;
     }
+
+    .tweet-card {
+      grid-template-columns: 1fr;
+    }
+
+    .tweet-card .hashtag-row {
+      grid-column: 1;
+      margin-top: 8px;
+    }
     
     .hero-side {
       padding-top: 50px;
@@ -494,6 +565,39 @@ const css = `
 `;
 
 export default function PieceOfPie() {
+  const sampleTweetTemplate = `Week [X] update for [Project Name]
+
+[Share what your team shipped this week]
+[Add your live link or demo update]
+[Share what you will build next]
+
+#gimbalabs #pieceofpie #hackathon @gimbalabs`;
+  const [copyButtonLabel, setCopyButtonLabel] = useState('Copy sample tweet');
+
+  const handleCopyTweet = async () => {
+    try {
+      if (typeof navigator !== 'undefined' && navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText(sampleTweetTemplate);
+      } else if (typeof document !== 'undefined') {
+        const textArea = document.createElement('textarea');
+        textArea.value = sampleTweetTemplate;
+        textArea.setAttribute('readonly', '');
+        textArea.style.position = 'absolute';
+        textArea.style.left = '-9999px';
+        document.body.appendChild(textArea);
+        textArea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textArea);
+      }
+
+      setCopyButtonLabel('Copied!');
+      window.setTimeout(() => setCopyButtonLabel('Copy sample tweet'), 1800);
+    } catch {
+      setCopyButtonLabel('Copy failed');
+      window.setTimeout(() => setCopyButtonLabel('Copy sample tweet'), 1800);
+    }
+  };
+
   return (
     <>
       <Head>
@@ -629,74 +733,141 @@ export default function PieceOfPie() {
               </div>
             </div>
 
-            <div className="rules-grid">
-              <article className="rule">
-                <div className="rule-num">1</div>
-                <h3>Software projects only</h3>
-                <p>Web2, Web3, or no-code is fine. The project must still be software.</p>
-              </article>
+            <div className="rule-group">
+              <h3 className="rule-group-title">🛠️ The Builder Pie</h3>
+              <div className="rules-grid">
+                <article className="rule">
+                  <div className="rule-num">1</div>
+                  <h3>Build for Real Users</h3>
+                  <p>Your project must be a user-facing software product (such as a SaaS app, web2/web3 platform, or tool). It needs to be something real users can directly interact with and use.</p>
+                </article>
 
-              <article className="rule">
-                <div className="rule-num">2</div>
-                <h3>Teams can have one or more participants</h3>
-                <p>Solo entries and team entries are both allowed.</p>
-              </article>
+                <article className="rule">
+                  <div className="rule-num">2</div>
+                  <h3>Work Solo or Form a Team</h3>
+                  <p>You can build on your own or collaborate with others. Both solo entries and team entries are completely welcome.</p>
+                </article>
 
-              <article className="rule">
-                <div className="rule-num">3</div>
-                <h3>All participant names are mandatory</h3>
-                <p>Every person on the project must be listed during registration. No unnamed teammates.</p>
-              </article>
+                <article className="rule">
+                  <div className="rule-num">3</div>
+                  <h3>Register Every Team Member</h3>
+                  <p>Every single person contributing to the project must be explicitly listed during registration. No unnamed or anonymous teammates are permitted.</p>
+                </article>
 
-              <article className="rule">
-                <div className="rule-num">4</div>
-                <h3>One participant can only join one project</h3>
-                <p>If a participant is involved in multiple projects, the project is disqualified.</p>
-              </article>
+                <article className="rule">
+                  <div className="rule-num">4</div>
+                  <h3>Commit to a Single Project</h3>
+                  <p>To ensure focus and quality, participants may only join one project. If you are found to be involved in multiple projects, the projects will be disqualified.</p>
+                </article>
 
-              <article className="rule">
-                <div className="rule-num">5</div>
-                <h3>Each project needs one official public repo</h3>
-                <p>The submitted repo link becomes the official source of truth for that project.</p>
-              </article>
+                <article className="rule">
+                  <div className="rule-num">5</div>
+                  <h3>Maintain One Official Public Repo</h3>
+                  <p>Each project requires a single public repository. This link will serve as the official source of truth for your work and must display a visible commit history.</p>
+                </article>
 
-              <article className="rule">
-                <div className="rule-num">6</div>
-                <h3>The repo can start empty</h3>
-                <p>It must be public at registration and remain public until final payout.</p>
-              </article>
+                <article className="rule">
+                  <div className="rule-num">6</div>
+                  <h3>Start With an Empty Repo</h3>
+                  <p>Your repository must start entirely empty. It must be made public at the time of registration and remain public until the final payouts are completed.</p>
+                </article>
 
-              <article className="rule">
-                <div className="rule-num">7</div>
-                <h3>Weekly public progress is required</h3>
-                <p>At least one public tweet every week. No misses.</p>
-              </article>
+                <article className="rule">
+                  <div className="rule-num">7</div>
+                  <h3>Post Weekly Progress Tweets (Mandatory)</h3>
+                  <p>You must post at least one public tweet every week demonstrating your progress. More tweets are encouraged, but missing even a single week will result in disqualification. To be verified, weekly tweets must:</p>
+                  <ul className="checklist">
+                    <li>Clearly show project progress.</li>
+                    <li>Include the hashtags: #gimbalabs, #pieceofpie, and #hackathon.</li>
+                    <li>Mention @gimbalabs.</li>
+                  </ul>
+                </article>
 
-              <article className="rule">
-                <div className="rule-num">8</div>
-                <h3>Weekly tweets must be easy to verify</h3>
-                <p>They should clearly show progress and include the required hackathon tags.</p>
-              </article>
+                <article className="rule">
+                  <div className="rule-num">8</div>
+                  <h3>Make Your Product Publicly Accessible</h3>
+                  <p>By the end of the event, your app or product must be publicly usable and deployed to its intended platform (e.g., a live web URL, a downloadable mobile app, a browser extension, etc.). Projects that only run locally (localhost) will not qualify.</p>
+                </article>
 
-              <article className="rule">
-                <div className="rule-num">9</div>
-                <h3>Feedback evidence must come from recorded interaction</h3>
-                <p>Google Meet, Zoom, or another recorded interaction is acceptable.</p>
-              </article>
+                <article className="rule">
+                  <div className="rule-num">9</div>
+                  <h3>Deliver a Complete Final Presentation</h3>
+                  <p>Qualification is based on your final presentation. To pass verification and prove your work, your presentation must include:</p>
+                  <ul className="checklist">
+                    <li>A live demo of your product.</li>
+                    <li>Your official public repo link.</li>
+                    <li>Links to all of your required weekly progress tweets.</li>
+                    <li>Link to deployed project</li>
+                  </ul>
+                </article>
 
-              <article className="rule">
-                <div className="rule-num">10</div>
-                <h3>Verification happens through public evidence</h3>
-                <p>Repo history, public posts, recorded feedback, and final presentation are the basis for qualification.</p>
-              </article>
+                <div className="callout tweet-card">
+                  <div className="tweet-card-head">
+                    <strong>Sample Weekly Progress Tweet</strong>
+                    <button type="button" className="btn tweet-copy-btn" onClick={handleCopyTweet}>
+                      {copyButtonLabel}
+                    </button>
+                  </div>
+                  <p className="tweet-help">
+                    Copy this template, then change the body to reflect your real progress for the week.
+                  </p>
+                  <div className="mono-box tweet-template">{sampleTweetTemplate}</div>
+                  <div className="hashtag-row">
+                    <div className="tag">#gimbalabs</div>
+                    <div className="tag">#pieceofpie</div>
+                    <div className="tag">#hackathon</div>
+                    <div className="tag">@gimbalabs</div>
+                  </div>
+                </div>
+              </div>
             </div>
 
-            <div className="hashtag-row">
-              <div className="tag">#gimbalabs</div>
-              <div className="tag">#pieceofpie</div>
-              <div className="tag">#hackathon</div>
-              <div className="tag">@gimbalabs</div>
+            <div className="rule-group">
+              <h3 className="rule-group-title">🚀 The Real User Pie</h3>
+              <div className="rules-grid">
+                <article className="rule">
+                  <div className="rule-num">1</div>
+                  <h3>Meet the Builder Requirements</h3>
+                  <p>To be eligible for this track, your project must first fully qualify for the Builder Pie requirements listed above.</p>
+                </article>
+
+                <article className="rule">
+                  <div className="rule-num">2</div>
+                  <h3>Gain Your First Paying User</h3>
+                  <p>You must secure at least 1 paying customer (excluding family and friends). You are required to provide proof of payment along with the story of how you acquired this user.</p>
+                </article>
+
+                <article className="rule">
+                  <div className="rule-num">3</div>
+                  <h3>Share Your Proof Publicly</h3>
+                  <p>Both your proof of payment and your customer acquisition story must be published publicly for verification.</p>
+                </article>
+              </div>
             </div>
+
+            <div className="rule-group">
+              <h3 className="rule-group-title">🗣️ The Feedback Pie</h3>
+              <div className="rules-grid">
+                <article className="rule">
+                  <div className="rule-num">1</div>
+                  <h3>Participate With or Without a Project</h3>
+                  <p>You do not need to be a participating Builder to join this track! It is open to anyone, though Builders are highly encouraged to participate as well.</p>
+                </article>
+
+                <article className="rule">
+                  <div className="rule-num">2</div>
+                  <h3>Recorded Feedback Sessions</h3>
+                  <p>All feedback must be given via live, recorded video sessions (using tools like Zoom, Google Meet, etc.).</p>
+                </article>
+
+                <article className="rule">
+                  <div className="rule-num">3</div>
+                  <h3>Earn Credits for Your Feedback</h3>
+                  <p>You will earn 1 credit for every recorded feedback session you complete, up to a maximum of 15 credits per qualified participant.</p>
+                </article>
+              </div>
+            </div>
+
           </section>
 
           {/* TIMELINE & REGISTRATION */}
