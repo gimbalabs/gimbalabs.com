@@ -360,7 +360,7 @@ const css = `
   }
 
   .rule-group--real-use {
-    background: rgba(112, 214, 255, 0.24);
+    background: rgba(203, 247, 232, 0.24);
   }
 
   .rule-group--feedback {
