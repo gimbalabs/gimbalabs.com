@@ -709,7 +709,7 @@ export default function PieceOfPie() {
                 <h2 className="section-title">How the Pie Gets Shared</h2>
                 <p className="pie-share-intro">Each pie rewards a different kind of contribution: building consistently, proving real-world value, and helping other teams get better.</p>
               </div>
-              <div className="priority-pill">13,000 ADA <span style={{ fontSize: '0.8rem'}}>available</span></div>
+              <div className="priority-pill">13,000 ADA available!</div>
             </div>
 
             <div className="pie-share-grid">
