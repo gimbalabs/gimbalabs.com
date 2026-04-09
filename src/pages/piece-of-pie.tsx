@@ -671,8 +671,7 @@ export default function PieceOfPie() {
             </section>
 
             <aside className="panel hero-side">
-              <div className="sticker">rules first!</div>
-              <h2 style={{ margin: '0 0 4px', fontFamily: "'Space Grotesk',sans-serif" }}>Before anyone registers</h2>
+              <div className="sticker">overview</div>
               <p style={{ margin: 0, fontWeight: 600, color: '#333' }}>
                 Teams can be solo or multi-person, but every participant must be named.
                 Each project must have one official public repo, and every participant can only be in one project.
@@ -680,11 +679,11 @@ export default function PieceOfPie() {
               <div className="mini-grid">
                 <div className="mini">
                   <strong>Duration</strong>
-                  12 weeks total
+                  ~12 weeks
                 </div>
                 <div className="mini">
                   <strong>Enrollment</strong>
-                  Weeks 1–2 only
+                  April 13th - 26th
                 </div>
                 <div className="mini">
                   <strong>Repo</strong>
@@ -710,7 +709,7 @@ export default function PieceOfPie() {
                 <h2 className="section-title">How the Pie Gets Shared</h2>
                 <p className="pie-share-intro">Each pie rewards a different kind of contribution: building consistently, proving real-world value, and helping other teams get better.</p>
               </div>
-              <div className="priority-pill">10,000 + 2,000 + 1,000 ADA</div>
+              <div className="priority-pill">13,000 ADA <span style={{ fontSize: '0.8rem'}}>available</span></div>
             </div>
 
             <div className="pie-share-grid">
@@ -718,7 +717,7 @@ export default function PieceOfPie() {
                 <h3>🥧 Builder Pie — 10,000 ADA (equal split)</h3>
                 <p>
                   Build one project over 12 weeks and share your progress publicly each week.
-                  Earn a share of the pie by showing up consistently and shipping something real.
+                  Earn an equal share of the pie by showing up consistently and shipping something real.
                 </p>
               </article>
 
@@ -726,7 +725,7 @@ export default function PieceOfPie() {
                 <h3>🥧 Real User Pie — 2,000 ADA (equal split)</h3>
                 <p>
                   Get at least one real paying user for your project.
-                  Earn a share by proving real-world value beyond friends and family.
+                  Earn an equal share by proving real-world value beyond friends and family.
                 </p>
               </article>
 
@@ -898,13 +897,13 @@ export default function PieceOfPie() {
                 <article className="rule">
                   <div className="rule-num">2</div>
                   <h3>Recorded Feedback Sessions</h3>
-                  <p>All feedback must be given via live, recorded video sessions (using tools like Zoom, Google Meet, etc.).</p>
+                  <p>All feedback must be given via live, recorded video sessions (using tools like Zoom, Google Meet, etc.) with the builder present. No unsolicited feedback.</p>
                 </article>
 
                 <article className="rule">
                   <div className="rule-num">3</div>
-                  <h3>Earn Credits for Your Feedback</h3>
-                  <p>You will earn 1 credit for every recorded feedback session you complete, up to a maximum of 15 credits per qualified participant.</p>
+                  <h3>Share Evidence & Earn Credits</h3>
+                  <p>You will earn 1 credit for every recorded feedback session you complete, up to a maximum of 15 credits per qualified participant. Evidence must be shared for verification.</p>
                 </article>
               </div>
             </div>
@@ -921,10 +920,6 @@ export default function PieceOfPie() {
 
               <div className="timeline">
                 <div className="timeline-item">
-                  <strong>Week 0 — Announcement - April 6th - 12th</strong>
-                  Rules, reward pools, and registration flow are published.
-                </div>
-                <div className="timeline-item">
                   <strong>Weeks 1–2 — Enrollment period - April 13th - 26th</strong>
                   Register the project, list every participant, and submit the official public repo.
                 </div>
@@ -934,11 +929,11 @@ export default function PieceOfPie() {
                 </div>
                 <div className="timeline-item">
                   <strong>Week 12 — Final presentations - June 29th - July 5th</strong>
-                  Show the live demo, public repo, and all weekly tweet links.
+                  Show the live/recorded demo, public repo, all weekly tweet links, etc. for verification.
                 </div>
                 <div className="timeline-item">
                   <strong>Post-hackathon — Payouts - July 5th - 12th</strong>
-                  Qualified participants receive equal shares within their pool based on the published rules.
+                  Qualified participants receive shares within their pool based on the published rules.
                 </div>
               </div>
             </div>
@@ -955,7 +950,7 @@ export default function PieceOfPie() {
                 </div>
                 <div className="timeline-item">
                   <strong>Step 2 — Complete the registration form</strong>
-                  Submit the official registration form with accurate information for every participant in your project.
+                  Submit the official registration form with accurate information.
                 </div>
                 <div className="timeline-item">
                   <strong>Step 3 — Keep your proof public</strong>
@@ -964,7 +959,7 @@ export default function PieceOfPie() {
               </div>
 
               <div className="footer-actions">
-                <a className="btn btn-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSc5O56y5Lj5xnDKPRpzev_2eYtm4U4Ju8hnpPMT3Sm56WPr7Q/viewform" target="_blank" rel="noopener noreferrer">Register</a>
+                <a className="btn btn-primary" href="https://forms.gle/dn717R8CcxTz6qFcA" target="_blank" rel="noopener noreferrer">Register</a>
                 <a className="btn btn-secondary" href="https://github.com" target="_blank" rel="noopener noreferrer">Create empty public repo</a>
               </div>
             </div>
@@ -975,7 +970,7 @@ export default function PieceOfPie() {
 
         {/* FOOTER */}
         <footer>
-          Piece Of Pie Hackathon by Gimbalabs · Built around clear rules, public progress, and verifiable participation.
+          Piece Of Pie Hackathon - 2026, by Gimbalabs · Built around clear rules, public progress, and verifiable participation.
         </footer>
     </>
   );
