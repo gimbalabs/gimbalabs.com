@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import Head from 'next/head';
 
 const css = `
@@ -37,60 +38,6 @@ const css = `
     line-height: 1.4;
     overflow-x: hidden;
   }
-
-  /* TEMP COMING SOON OVERLAY START - DELETE LATER */
-  .page-content-blurred {
-    filter: blur(8px);
-    pointer-events: none;
-    user-select: none;
-  }
-
-  .coming-soon-overlay {
-    position: fixed;
-    inset: 0;
-    z-index: 9999;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 24px;
-    background: rgba(15, 23, 42, 0.35);
-  }
-
-  .coming-soon-modal {
-    width: min(560px, 100%);
-    border: 3px solid var(--border);
-    border-radius: 20px;
-    background: var(--whipped-cream);
-    box-shadow: 8px 8px 0px var(--shadow);
-    padding: 32px 28px;
-    text-align: center;
-  }
-
-  .coming-soon-modal p {
-    margin: 0;
-  }
-
-  .coming-soon-kicker {
-    margin-bottom: 10px !important;
-    font-size: 0.9rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: #334155;
-  }
-
-  .coming-soon-title {
-    margin: 0 0 12px;
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: clamp(2rem, 6vw, 3rem);
-    line-height: 1.1;
-  }
-
-  .coming-soon-copy {
-    font-size: 1.05rem;
-    color: #475569;
-  }
-  /* TEMP COMING SOON OVERLAY END - DELETE LATER */
 
   a { 
     color: inherit; 
@@ -334,6 +281,41 @@ const css = `
     transform: rotate(-2deg);
   }
 
+  /* --- PIE SHARES --- */
+  .pie-share-intro {
+    margin: 6px 0 0;
+    font-size: 1.05rem;
+    color: #4a4a4a;
+    max-width: 70ch;
+  }
+
+  .pie-share-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+    margin-top: 20px;
+  }
+
+  .pie-share-card {
+    background: white;
+    border: 3px solid var(--border);
+    border-radius: 16px;
+    padding: 18px;
+    box-shadow: 5px 5px 0px var(--shadow);
+  }
+
+  .pie-share-card h3 {
+    margin: 0 0 10px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.1rem;
+    line-height: 1.3;
+  }
+
+  .pie-share-card p {
+    margin: 0;
+    color: #4a4a4a;
+  }
+
   /* --- CORE RULES --- */
   .rules-intro {
     display: grid;
@@ -363,6 +345,52 @@ const css = `
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 20px;
+  }
+
+  .rule-group {
+    margin-top: 28px;
+    border: 3px solid var(--border);
+    border-radius: 20px;
+    padding: 18px;
+    box-shadow: 5px 5px 0px var(--shadow);
+  }
+
+  .rule-group--builder {
+    background: rgba(247, 197, 72, 0.22);
+  }
+
+  .rule-group--real-use {
+    background: rgba(203, 247, 232, 0.24);
+  }
+
+  .rule-group--feedback {
+    background: rgba(244, 172, 183, 0.24);
+  }
+
+  .rule-group:first-of-type {
+    margin-top: 0;
+  }
+
+  .rule-group-title {
+    margin: 0 0 14px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.25rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .rule-group-icon {
+    width: 40px;
+    height: 40px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    border: 2px solid var(--border);
+    background: var(--whipped-cream);
+    font-size: 1.1rem;
+    line-height: 1;
+    flex-shrink: 0;
   }
 
   .rule {
@@ -450,6 +478,10 @@ const css = `
     padding-left: 5px;
   }
 
+  .checklist--warning li {
+    list-style-type: '💀 ';
+  }
+
   .mono-box {
     margin-top: 14px;
     border-radius: 12px;
@@ -479,11 +511,128 @@ const css = `
     box-shadow: 3px 3px 0px var(--shadow);
   }
 
+  .tweet-card {
+    grid-column: 1 / -1;
+    height: 100%;
+    display: grid;
+    grid-template-columns: minmax(0, 1.35fr) minmax(260px, 0.65fr);
+    gap: 12px 16px;
+    align-items: start;
+  }
+
+  .tweet-card-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    grid-column: 1 / -1;
+  }
+
+  .tweet-card-head strong {
+    color: var(--text);
+  }
+
+  .tweet-help {
+    margin: 10px 0 0;
+    color: #444;
+    grid-column: 1 / -1;
+  }
+
+  .tweet-template {
+    margin-top: 12px;
+    white-space: pre-wrap;
+    line-height: 1.5;
+    grid-column: 1;
+  }
+
+  .tweet-copy-btn {
+    padding: 8px 14px;
+    font-size: 0.9rem;
+    background: var(--crust-yellow);
+  }
+
+  .tweet-card .hashtag-row {
+    grid-column: 2;
+    margin-top: 12px;
+    align-self: start;
+  }
+
   .footer-actions {
     display: flex;
     gap: 12px;
     flex-wrap: wrap;
     margin-top: 20px;
+  }
+
+  .source-truth {
+    margin-top: 28px;
+  }
+
+  .source-truth-panel {
+    background: var(--whipped-cream);
+    border: 3px solid var(--border);
+    border-radius: 24px;
+    box-shadow: 8px 8px 0px var(--shadow);
+    padding: 24px;
+  }
+
+  .source-truth-title {
+    margin: 0;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(1.5rem, 2.6vw, 2rem);
+    line-height: 1.1;
+  }
+
+  .source-truth-sub {
+    margin: 10px 0 0;
+    color: #454545;
+    max-width: 72ch;
+  }
+
+  .source-truth-links {
+    margin-top: 18px;
+    display: grid;
+    gap: 12px;
+  }
+
+  .source-truth-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 14px 16px;
+    border: 3px solid var(--border);
+    border-radius: 14px;
+    background: #fff8dc;
+    box-shadow: 4px 4px 0px var(--shadow);
+    font-weight: 600;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+
+  .source-truth-link:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0px var(--shadow);
+  }
+
+  .source-truth-link:active {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0px var(--shadow);
+  }
+
+  .source-truth-link:focus-visible {
+    outline: 3px solid var(--berry-blue);
+    outline-offset: 3px;
+  }
+
+  .source-truth-link-text {
+    margin: 0;
+  }
+
+  .source-truth-link-icon {
+    width: 28px;
+    height: 28px;
+    flex-shrink: 0;
   }
 
   /* --- FOOTER --- */
@@ -505,14 +654,64 @@ const css = `
     .split {
       grid-template-columns: 1fr;
     }
+
+    .tweet-card {
+      grid-template-columns: 1fr;
+    }
+
+    .tweet-card .hashtag-row {
+      grid-column: 1;
+      margin-top: 8px;
+    }
     
     .hero-side {
       padding-top: 50px;
+    }
+
+    .source-truth-panel {
+      padding: 20px;
+    }
+
+    .source-truth-link {
+      align-items: flex-start;
     }
   }
 `;
 
 export default function PieceOfPie() {
+  const sampleTweetTemplate = `Week [X] update for [Project Name]
+
+[Share what your team shipped this week]
+[Add your live link or demo update]
+[Share what you will build next]
+
+#gimbalabs #pieceofpie #hackathon @gimbalabs`;
+  const [copyButtonLabel, setCopyButtonLabel] = useState('Copy sample tweet');
+
+  const handleCopyTweet = async () => {
+    try {
+      if (typeof navigator !== 'undefined' && navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText(sampleTweetTemplate);
+      } else if (typeof document !== 'undefined') {
+        const textArea = document.createElement('textarea');
+        textArea.value = sampleTweetTemplate;
+        textArea.setAttribute('readonly', '');
+        textArea.style.position = 'absolute';
+        textArea.style.left = '-9999px';
+        document.body.appendChild(textArea);
+        textArea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textArea);
+      }
+
+      setCopyButtonLabel('Copied!');
+      window.setTimeout(() => setCopyButtonLabel('Copy sample tweet'), 1800);
+    } catch {
+      setCopyButtonLabel('Copy failed');
+      window.setTimeout(() => setCopyButtonLabel('Copy sample tweet'), 1800);
+    }
+  };
+
   return (
     <>
       <Head>
@@ -524,8 +723,6 @@ export default function PieceOfPie() {
         <style dangerouslySetInnerHTML={{ __html: css }} />
       </Head>
 
-      {/* TEMP COMING SOON OVERLAY START - DELETE LATER */}
-      <div className="page-content-blurred" aria-hidden="true">
         {/* NAVIGATION */}
         <div className="wrap topbar">
           <div className="brand">
@@ -556,8 +753,7 @@ export default function PieceOfPie() {
             </section>
 
             <aside className="panel hero-side">
-              <div className="sticker">rules first!</div>
-              <h2 style={{ margin: '0 0 4px', fontFamily: "'Space Grotesk',sans-serif" }}>Before anyone registers</h2>
+              <div className="sticker">overview</div>
               <p style={{ margin: 0, fontWeight: 600, color: '#333' }}>
                 Teams can be solo or multi-person, but every participant must be named.
                 Each project must have one official public repo, and every participant can only be in one project.
@@ -565,11 +761,11 @@ export default function PieceOfPie() {
               <div className="mini-grid">
                 <div className="mini">
                   <strong>Duration</strong>
-                  12 weeks total
+                  ~12 weeks
                 </div>
                 <div className="mini">
                   <strong>Enrollment</strong>
-                  Weeks 1–2 only
+                  April 13th - 26th
                 </div>
                 <div className="mini">
                   <strong>Repo</strong>
@@ -587,6 +783,43 @@ export default function PieceOfPie() {
         {/* MAIN CONTENT */}
         <main>
           <div className="wrap">
+
+          {/* PIE SHARES */}
+          <section className="section panel">
+            <div className="section-head">
+              <div>
+                <h2 className="section-title">How the Pie Gets Shared</h2>
+                <p className="pie-share-intro">Each pie rewards a different kind of contribution: building consistently, proving real-world value, and helping other teams get better.</p>
+              </div>
+              <div className="priority-pill">13,000 ADA available!</div>
+            </div>
+
+            <div className="pie-share-grid">
+              <article className="pie-share-card">
+                <h3>🥧 Builder Pie — 10,000 ADA (equal split)</h3>
+                <p>
+                  Build one project over 12 weeks and share your progress publicly each week.
+                  Earn an equal share of the pie by showing up consistently and shipping something real.
+                </p>
+              </article>
+
+              <article className="pie-share-card">
+                <h3>🥧 Real User Pie — 2,000 ADA (equal split)</h3>
+                <p>
+                  Get at least one real paying user for your project.
+                  Earn an equal share by proving real-world value beyond friends and family.
+                </p>
+              </article>
+
+              <article className="pie-share-card">
+                <h3>🥧 Feedback Pie — 1,000 ADA (credit-weighted)</h3>
+                <p>
+                  Help other builders by giving live, recorded feedback sessions.
+                  Earn based on how much useful feedback you contribute.
+                </p>
+              </article>
+            </div>
+          </section>
 
           {/* RULES SECTION */}
           <section id="rules" className="section panel">
@@ -607,80 +840,165 @@ export default function PieceOfPie() {
               </div>
               <div className="warning">
                 <strong style={{ color: 'var(--cherry-red)' }}>Automatic disqualification triggers</strong>
-                <p style={{ margin: '8px 0 0', color: '#444' }}>
-                  Missing a required weekly tweet, joining more than one project, or failing to provide verifiable public evidence can disqualify a project.
-                </p>
+                <ul className="checklist checklist--warning">
+                  <li>Missing a required weekly tweet.</li>
+                  <li>Joining more than one project.</li>
+                  <li>Failing to provide verifiable public evidence.</li>
+                </ul>
               </div>
             </div>
 
-            <div className="rules-grid">
-              <article className="rule">
-                <div className="rule-num">1</div>
-                <h3>Software projects only</h3>
-                <p>Web2, Web3, or no-code is fine. The project must still be software.</p>
-              </article>
+            <div className="rule-group rule-group--builder">
+              <h3 className="rule-group-title">
+                <span className="rule-group-icon" aria-hidden="true">🛠️</span>
+                <span>The Builder Pie</span>
+              </h3>
+              <div className="rules-grid">
+                <article className="rule">
+                  <div className="rule-num">1</div>
+                  <h3>Build for Real Users</h3>
+                  <p>Your project must be a user-facing software product (such as a SaaS app, web2/web3 platform, or tool). It needs to be something real users can directly interact with and use.</p>
+                </article>
 
-              <article className="rule">
-                <div className="rule-num">2</div>
-                <h3>Teams can have one or more participants</h3>
-                <p>Solo entries and team entries are both allowed.</p>
-              </article>
+                <article className="rule">
+                  <div className="rule-num">2</div>
+                  <h3>Work Solo or Form a Team</h3>
+                  <p>You can build on your own or collaborate with others. Both solo entries and team entries are completely welcome.</p>
+                </article>
 
-              <article className="rule">
-                <div className="rule-num">3</div>
-                <h3>All participant names are mandatory</h3>
-                <p>Every person on the project must be listed during registration. No unnamed teammates.</p>
-              </article>
+                <article className="rule">
+                  <div className="rule-num">3</div>
+                  <h3>Register Every Team Member</h3>
+                  <p>Every single person contributing to the project must be explicitly listed during registration. No unnamed or anonymous teammates are permitted.</p>
+                </article>
 
-              <article className="rule">
-                <div className="rule-num">4</div>
-                <h3>One participant can only join one project</h3>
-                <p>If a participant is involved in multiple projects, the project is disqualified.</p>
-              </article>
+                <article className="rule">
+                  <div className="rule-num">4</div>
+                  <h3>Commit to a Single Project</h3>
+                  <p>To ensure focus and quality, participants may only join one project. If you are found to be involved in multiple projects, the projects will be disqualified.</p>
+                </article>
 
-              <article className="rule">
-                <div className="rule-num">5</div>
-                <h3>Each project needs one official public repo</h3>
-                <p>The submitted repo link becomes the official source of truth for that project.</p>
-              </article>
+                <article className="rule">
+                  <div className="rule-num">5</div>
+                  <h3>Maintain One Official Public Repo</h3>
+                  <p>Each project requires a single public repository. This link will serve as the official source of truth for your work and must display a visible commit history.</p>
+                </article>
 
-              <article className="rule">
-                <div className="rule-num">6</div>
-                <h3>The repo can start empty</h3>
-                <p>It must be public at registration and remain public until final payout.</p>
-              </article>
+                <article className="rule">
+                  <div className="rule-num">6</div>
+                  <h3>Start With an Empty Repo</h3>
+                  <p>Your repository must start entirely empty. It must be made public at the time of registration and remain public until the final payouts are completed.</p>
+                </article>
 
-              <article className="rule">
-                <div className="rule-num">7</div>
-                <h3>Weekly public progress is required</h3>
-                <p>At least one public tweet every week. No misses.</p>
-              </article>
+                <article className="rule">
+                  <div className="rule-num">7</div>
+                  <h3>Post Weekly Progress Tweets (Mandatory)</h3>
+                  <p>You must post at least one public tweet every week demonstrating your progress. More tweets are encouraged, but missing even a single week will result in disqualification. To be verified, weekly tweets must:</p>
+                  <ul className="checklist">
+                    <li>Clearly show project progress.</li>
+                    <li>Include the hashtags: #gimbalabs, #pieceofpie, and #hackathon.</li>
+                    <li>Mention @gimbalabs.</li>
+                  </ul>
+                </article>
 
-              <article className="rule">
-                <div className="rule-num">8</div>
-                <h3>Weekly tweets must be easy to verify</h3>
-                <p>They should clearly show progress and include the required hackathon tags.</p>
-              </article>
+                <article className="rule">
+                  <div className="rule-num">8</div>
+                  <h3>Make Your Product Publicly Accessible</h3>
+                  <p>By the end of the event, your app or product must be publicly usable and deployed to its intended platform (e.g., a live web URL, a downloadable mobile app, a browser extension, etc.). Projects that only run locally (localhost) will not qualify.</p>
+                </article>
 
-              <article className="rule">
-                <div className="rule-num">9</div>
-                <h3>Feedback evidence must come from recorded interaction</h3>
-                <p>Google Meet, Zoom, or another recorded interaction is acceptable.</p>
-              </article>
+                <article className="rule">
+                  <div className="rule-num">9</div>
+                  <h3>Deliver a Complete Final Presentation</h3>
+                  <p>Qualification is based on your final presentation. To pass verification and prove your work, your presentation must include:</p>
+                  <ul className="checklist">
+                    <li>A live demo of your product.</li>
+                    <li>Your official public repo link.</li>
+                    <li>Links to all of your required weekly progress tweets.</li>
+                    <li>Link to deployed project</li>
+                  </ul>
+                </article>
 
-              <article className="rule">
-                <div className="rule-num">10</div>
-                <h3>Verification happens through public evidence</h3>
-                <p>Repo history, public posts, recorded feedback, and final presentation are the basis for qualification.</p>
-              </article>
+                <div className="callout tweet-card">
+                  <div className="tweet-card-head">
+                    <strong>Sample Weekly Progress Tweet</strong>
+                    <button type="button" className="btn tweet-copy-btn" onClick={handleCopyTweet}>
+                      {copyButtonLabel}
+                    </button>
+                  </div>
+                  <p className="tweet-help">
+                    Copy this template, then change the body to reflect your real progress for the week.
+                  </p>
+                  <div className="mono-box tweet-template">{sampleTweetTemplate}</div>
+                  <div className="hashtag-row">
+                    <div className="tag">#gimbalabs</div>
+                    <div className="tag">#pieceofpie</div>
+                    <div className="tag">#hackathon</div>
+                    <div className="tag">@gimbalabs</div>
+                  </div>
+                </div>
+              </div>
             </div>
 
-            <div className="hashtag-row">
-              <div className="tag">#gimbalabs</div>
-              <div className="tag">#pieceofpie</div>
-              <div className="tag">#hackathon</div>
-              <div className="tag">@gimbalabs</div>
+            <div className="rule-group rule-group--real-use">
+              <h3 className="rule-group-title">
+                <span className="rule-group-icon" aria-hidden="true">🚀</span>
+                <span>The Real User Pie</span>
+              </h3>
+              <div className="rules-grid">
+                <article className="rule">
+                  <div className="rule-num">1</div>
+                  <h3>Meet the Builder Requirements</h3>
+                  <p>To be eligible for this track, your project must first fully qualify for the Builder Pie requirements listed above.</p>
+                </article>
+
+                <article className="rule">
+                  <div className="rule-num">2</div>
+                  <h3>Gain Your First Paying User</h3>
+                  <p>You must secure at least 1 paying customer (excluding family and friends). You are required to provide proof of payment along with the story of how you acquired this user.</p>
+                </article>
+
+                <article className="rule">
+                  <div className="rule-num">3</div>
+                  <h3>Share Your Proof Publicly</h3>
+                  <p>Both your proof of payment and your customer acquisition story must be published publicly for verification.</p>
+                </article>
+              </div>
             </div>
+
+            <div className="rule-group rule-group--feedback">
+              <h3 className="rule-group-title">
+                <span className="rule-group-icon" aria-hidden="true">🗣️</span>
+                <span>The Feedback Pie</span>
+              </h3>
+              <div className="rules-grid">
+                <article className="rule">
+                  <div className="rule-num">1</div>
+                  <h3>Participate With or Without a Project</h3>
+                  <p>You do not need to be a participating Builder to join this track! It is open to anyone, though Builders are highly encouraged to participate as well.</p>
+                </article>
+
+                <article className="rule">
+                  <div className="rule-num">2</div>
+                  <h3>Recorded Feedback Sessions</h3>
+                  <p>All feedback must be given via live, recorded video sessions (using tools like Zoom, Google Meet, etc.) with the builder present. No unsolicited feedback.</p>
+                </article>
+
+                <article className="rule">
+                  <div className="rule-num">3</div>
+                  <h3>Share Evidence & Earn Credits</h3>
+                  <p>
+                    You will earn 1 credit for every recorded feedback session you complete, up to a maximum of 15 credits per qualified participant. Evidence must be shared for verification.{" "}
+                    <a href="https://docs.google.com/document/d/1FPellYxfgDSqw2Qlv6srPxh4DfKfjP20RHKns5OXvqg/edit?tab=t.0" target="_blank" rel="noopener noreferrer">
+                      <strong>
+                        <u>Use this template</u>
+                      </strong>
+                    </a>
+                  </p>
+                </article>
+              </div>
+            </div>
+
           </section>
 
           {/* TIMELINE & REGISTRATION */}
@@ -689,28 +1007,24 @@ export default function PieceOfPie() {
             {/* TIMELINE */}
             <div id="timeline" className="panel">
               <h2 className="section-title">Timeline</h2>
-              <p className="section-sub">Simple structure. Enrollment first, then consistent build work.</p>
+              <p className="section-sub">Start with enrollment, then keep the momentum with steady build sessions and receiving feedback.</p>
 
               <div className="timeline">
                 <div className="timeline-item">
-                  <strong>Week 0 — Announcement</strong>
-                  Rules, reward pools, and registration flow are published.
-                </div>
-                <div className="timeline-item">
-                  <strong>Weeks 1–2 — Enrollment period</strong>
+                  <strong>Weeks 1–2 — Enrollment period - April 13th - 26th</strong>
                   Register the project, list every participant, and submit the official public repo.
                 </div>
                 <div className="timeline-item">
-                  <strong>Weeks 1–12 — Build period</strong>
+                  <strong>Weeks 1–12 — Build period - April 13th - July 5th</strong>
                   Build in public, keep the repo updated, and post at least one public progress tweet every week.
                 </div>
                 <div className="timeline-item">
-                  <strong>End of Week 12 — Final presentations</strong>
-                  Show the live demo, public repo, and all weekly tweet links.
+                  <strong>Week 12 — Final presentations - June 29th - July 5th</strong>
+                  Show the live/recorded demo, public repo, all weekly tweet links, etc. for verification.
                 </div>
                 <div className="timeline-item">
-                  <strong>Post-hackathon — Payouts</strong>
-                  Qualified participants receive equal shares within their pool based on the published rules.
+                  <strong>Post-hackathon — Payouts - July 5th - 12th</strong>
+                  Qualified participants receive shares within their pool based on the published rules.
                 </div>
               </div>
             </div>
@@ -718,33 +1032,68 @@ export default function PieceOfPie() {
             {/* REGISTRATION */}
             <div id="register" className="panel">
               <h2 className="section-title">Registration</h2>
-              <p className="section-sub">Registration should happen through a Google Form, not a custom on-site form.</p>
+              <p className="section-sub">Submit one registration form per project during the enrollment window.</p>
 
-              <div className="success" style={{ marginTop: '14px' }}>
-                <strong style={{ color: '#2e7d32' }}>What the Google Form must require</strong>
-                <ul className="checklist">
-                  <li>Project title</li>
-                  <li>Primary contact name</li>
-                  <li><strong>All participant names</strong></li>
-                  <li>Contact email</li>
-                  <li>Short project summary</li>
-                  <li><strong>Official public Git repository link</strong></li>
-                  <li>Agreement to weekly tweet requirement</li>
-                  <li>Agreement to one-project-per-participant rule</li>
-                  <li>Feedback session plan</li>
-                </ul>
+              <div className="timeline" style={{ marginTop: '14px' }}>
+                <div className="timeline-item">
+                  <strong>Step 1 — Prepare your project info</strong>
+                  Finalize your project title and team members, create an empty public GitHub repo, and keep the repo link ready before you begin.
+                </div>
+                <div className="timeline-item">
+                  <strong>Step 2 — Complete the registration form</strong>
+                  Submit the official registration form with accurate information.
+                </div>
+                <div className="timeline-item">
+                  <strong>Step 3 — Keep your proof public</strong>
+                  Ensure your repository and weekly progress tweets remain public for verification throughout the hackathon.
+                </div>
               </div>
-
-              <div className="mono-box">Example official repo: https://github.com/your-org/your-project</div>
 
               <div className="footer-actions">
-                <a className="btn btn-primary" href="https://forms.google.com" target="_blank" rel="noopener noreferrer">Open Google Form</a>
+                <a className="btn btn-primary" href="https://forms.gle/dn717R8CcxTz6qFcA" target="_blank" rel="noopener noreferrer">Register</a>
                 <a className="btn btn-secondary" href="https://github.com" target="_blank" rel="noopener noreferrer">Create empty public repo</a>
               </div>
+            </div>
+          </section>
 
-              <p className="section-sub" style={{ marginTop: '16px', fontSize: '0.9rem' }}>
-                Replace the placeholder Google Form and GitHub links with the real ones before publishing.
+          <section className="source-truth">
+            <div className="source-truth-panel">
+              <h2 className="source-truth-title">Official Source of Truth</h2>
+              <p className="source-truth-sub">
+                All detailed rules, clarifications, FAQs, and official updates live in the Piece of Pie official channels. Please review them regularly to stay aligned throughout the hackathon.
               </p>
+
+              <div className="source-truth-links">
+                <a
+                  className="source-truth-link"
+                  href="https://github.com/gimbalabs/Piece-of-Pie-Hackathon"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Open the Piece of Pie official GitHub repository"
+                >
+                  <p className="source-truth-link-text">
+                    For detailed rules, FAQs, and updates, check out the Piece of Pie Official Repo.
+                  </p>
+                  <svg className="source-truth-link-icon" viewBox="0 0 24 24" aria-hidden="true">
+                    <path fill="currentColor" d="M12 2C6.48 2 2 6.58 2 12.23c0 4.52 2.87 8.35 6.84 9.71c.5.1.68-.22.68-.49c0-.24-.01-1.05-.01-1.9c-2.78.62-3.37-1.21-3.37-1.21c-.45-1.18-1.11-1.49-1.11-1.49c-.91-.64.07-.63.07-.63c1 .07 1.53 1.05 1.53 1.05c.9 1.57 2.35 1.12 2.92.85c.09-.67.35-1.12.64-1.38c-2.22-.26-4.56-1.14-4.56-5.07c0-1.12.39-2.03 1.03-2.75c-.1-.26-.45-1.3.1-2.7c0 0 .84-.27 2.75 1.05A9.31 9.31 0 0 1 12 6.84c.85 0 1.71.12 2.51.35c1.91-1.32 2.75-1.05 2.75-1.05c.55 1.4.2 2.44.1 2.7c.64.72 1.03 1.63 1.03 2.75c0 3.94-2.34 4.8-4.57 5.06c.36.32.67.95.67 1.92c0 1.39-.01 2.5-.01 2.84c0 .27.18.59.69.49A10.22 10.22 0 0 0 22 12.23C22 6.58 17.52 2 12 2Z" />
+                  </svg>
+                </a>
+
+                <a
+                  className="source-truth-link"
+                  href="https://discord.gg/jJcwaqJHPV"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Join the Gimbalabs Discord server"
+                >
+                  <p className="source-truth-link-text">
+                    If you have questions, ask in the Gimbalabs Discord.
+                  </p>
+                  <svg className="source-truth-link-icon" viewBox="0 0 24 24" aria-hidden="true">
+                    <path fill="currentColor" d="M20.32 4.37a19.73 19.73 0 0 0-4.9-1.53a13.86 13.86 0 0 0-.63 1.28a18.21 18.21 0 0 0-5.58 0a12.46 12.46 0 0 0-.63-1.28a19.68 19.68 0 0 0-4.91 1.54C.6 9 .11 13.45.35 17.83a19.86 19.86 0 0 0 6 3.02a14.3 14.3 0 0 0 1.29-2.14a12.75 12.75 0 0 1-2.03-.99c.17-.13.33-.27.49-.41c3.92 1.87 8.18 1.87 12.05 0c.16.14.32.28.49.41c-.64.39-1.32.72-2.03.99c.37.75.8 1.46 1.29 2.14a19.74 19.74 0 0 0 6-3.02c.28-5.08-.47-9.49-3.58-13.46ZM8.31 15.1c-1.18 0-2.14-1.1-2.14-2.45c0-1.35.95-2.45 2.14-2.45c1.2 0 2.15 1.11 2.14 2.45c0 1.35-.95 2.45-2.14 2.45Zm7.38 0c-1.19 0-2.14-1.1-2.14-2.45c0-1.35.95-2.45 2.14-2.45c1.19 0 2.14 1.11 2.14 2.45c0 1.35-.95 2.45-2.14 2.45Z" />
+                  </svg>
+                </a>
+              </div>
             </div>
           </section>
 
@@ -753,20 +1102,8 @@ export default function PieceOfPie() {
 
         {/* FOOTER */}
         <footer>
-          Piece Of Pie Hackathon by Gimbalabs · Built around clear rules, public progress, and verifiable participation.
+          Piece Of Pie Hackathon - 2026, by Gimbalabs · Built around clear rules, public progress, and verifiable participation.
         </footer>
-      </div>
-
-      <div className="coming-soon-overlay" role="dialog" aria-modal="true" aria-label="Coming soon">
-        <div className="coming-soon-modal">
-          <p className="coming-soon-kicker">Gimbalabs</p>
-          <h2 className="coming-soon-title">Coming Soon</h2>
-          <p className="coming-soon-copy">
-            This page is currently in progress.
-          </p>
-        </div>
-      </div>
-      {/* TEMP COMING SOON OVERLAY END - DELETE LATER */}
     </>
   );
 }
