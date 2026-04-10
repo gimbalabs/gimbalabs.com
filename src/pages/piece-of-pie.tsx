@@ -922,7 +922,7 @@ export default function PieceOfPie() {
             {/* TIMELINE */}
             <div id="timeline" className="panel">
               <h2 className="section-title">Timeline</h2>
-              <p className="section-sub">Simple structure. Enrollment first, then consistent build work.</p>
+              <p className="section-sub">Start with enrollment, then keep the momentum with steady build sessions.</p>
 
               <div className="timeline">
                 <div className="timeline-item">
