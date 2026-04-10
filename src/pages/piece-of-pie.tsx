@@ -474,8 +474,12 @@ const css = `
 
   .checklist li { 
     margin: 8px 0; 
-    list-style-type: '💀 ';
+    list-style-type: '🧁 ';
     padding-left: 5px;
+  }
+
+  .checklist--warning li {
+    list-style-type: '💀 ';
   }
 
   .mono-box {
@@ -758,7 +762,7 @@ export default function PieceOfPie() {
               </div>
               <div className="warning">
                 <strong style={{ color: 'var(--cherry-red)' }}>Automatic disqualification triggers</strong>
-                <ul className="checklist">
+                <ul className="checklist checklist--warning">
                   <li>Missing a required weekly tweet.</li>
                   <li>Joining more than one project.</li>
                   <li>Failing to provide verifiable public evidence.</li>
