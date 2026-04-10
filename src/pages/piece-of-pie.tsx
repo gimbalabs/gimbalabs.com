@@ -565,6 +565,76 @@ const css = `
     margin-top: 20px;
   }
 
+  .source-truth {
+    margin-top: 28px;
+  }
+
+  .source-truth-panel {
+    background: var(--whipped-cream);
+    border: 3px solid var(--border);
+    border-radius: 24px;
+    box-shadow: 8px 8px 0px var(--shadow);
+    padding: 24px;
+  }
+
+  .source-truth-title {
+    margin: 0;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(1.5rem, 2.6vw, 2rem);
+    line-height: 1.1;
+  }
+
+  .source-truth-sub {
+    margin: 10px 0 0;
+    color: #454545;
+    max-width: 72ch;
+  }
+
+  .source-truth-links {
+    margin-top: 18px;
+    display: grid;
+    gap: 12px;
+  }
+
+  .source-truth-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 14px 16px;
+    border: 3px solid var(--border);
+    border-radius: 14px;
+    background: #fff8dc;
+    box-shadow: 4px 4px 0px var(--shadow);
+    font-weight: 600;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+
+  .source-truth-link:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0px var(--shadow);
+  }
+
+  .source-truth-link:active {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0px var(--shadow);
+  }
+
+  .source-truth-link:focus-visible {
+    outline: 3px solid var(--berry-blue);
+    outline-offset: 3px;
+  }
+
+  .source-truth-link-text {
+    margin: 0;
+  }
+
+  .source-truth-link-icon {
+    width: 28px;
+    height: 28px;
+    flex-shrink: 0;
+  }
+
   /* --- FOOTER --- */
   footer {
     padding: 30px 0;
@@ -596,6 +666,14 @@ const css = `
     
     .hero-side {
       padding-top: 50px;
+    }
+
+    .source-truth-panel {
+      padding: 20px;
+    }
+
+    .source-truth-link {
+      align-items: flex-start;
     }
   }
 `;
@@ -974,6 +1052,47 @@ export default function PieceOfPie() {
               <div className="footer-actions">
                 <a className="btn btn-primary" href="https://forms.gle/dn717R8CcxTz6qFcA" target="_blank" rel="noopener noreferrer">Register</a>
                 <a className="btn btn-secondary" href="https://github.com" target="_blank" rel="noopener noreferrer">Create empty public repo</a>
+              </div>
+            </div>
+          </section>
+
+          <section className="source-truth">
+            <div className="source-truth-panel">
+              <h2 className="source-truth-title">Official Source of Truth</h2>
+              <p className="source-truth-sub">
+                All detailed rules, clarifications, FAQs, and official updates live in the Piece of Pie official channels. Please review them regularly to stay aligned throughout the hackathon.
+              </p>
+
+              <div className="source-truth-links">
+                <a
+                  className="source-truth-link"
+                  href="https://github.com/gimbalabs/Piece-of-Pie-Hackathon"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Open the Piece of Pie official GitHub repository"
+                >
+                  <p className="source-truth-link-text">
+                    For detailed rules, FAQs, and updates, check out the Piece of Pie Official Repo.
+                  </p>
+                  <svg className="source-truth-link-icon" viewBox="0 0 24 24" aria-hidden="true">
+                    <path fill="currentColor" d="M12 2C6.48 2 2 6.58 2 12.23c0 4.52 2.87 8.35 6.84 9.71c.5.1.68-.22.68-.49c0-.24-.01-1.05-.01-1.9c-2.78.62-3.37-1.21-3.37-1.21c-.45-1.18-1.11-1.49-1.11-1.49c-.91-.64.07-.63.07-.63c1 .07 1.53 1.05 1.53 1.05c.9 1.57 2.35 1.12 2.92.85c.09-.67.35-1.12.64-1.38c-2.22-.26-4.56-1.14-4.56-5.07c0-1.12.39-2.03 1.03-2.75c-.1-.26-.45-1.3.1-2.7c0 0 .84-.27 2.75 1.05A9.31 9.31 0 0 1 12 6.84c.85 0 1.71.12 2.51.35c1.91-1.32 2.75-1.05 2.75-1.05c.55 1.4.2 2.44.1 2.7c.64.72 1.03 1.63 1.03 2.75c0 3.94-2.34 4.8-4.57 5.06c.36.32.67.95.67 1.92c0 1.39-.01 2.5-.01 2.84c0 .27.18.59.69.49A10.22 10.22 0 0 0 22 12.23C22 6.58 17.52 2 12 2Z" />
+                  </svg>
+                </a>
+
+                <a
+                  className="source-truth-link"
+                  href="https://discord.gg/jJcwaqJHPV"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Join the Gimbalabs Discord server"
+                >
+                  <p className="source-truth-link-text">
+                    If you have questions, ask in the Gimbalabs Discord.
+                  </p>
+                  <svg className="source-truth-link-icon" viewBox="0 0 24 24" aria-hidden="true">
+                    <path fill="currentColor" d="M20.32 4.37a19.73 19.73 0 0 0-4.9-1.53a13.86 13.86 0 0 0-.63 1.28a18.21 18.21 0 0 0-5.58 0a12.46 12.46 0 0 0-.63-1.28a19.68 19.68 0 0 0-4.91 1.54C.6 9 .11 13.45.35 17.83a19.86 19.86 0 0 0 6 3.02a14.3 14.3 0 0 0 1.29-2.14a12.75 12.75 0 0 1-2.03-.99c.17-.13.33-.27.49-.41c3.92 1.87 8.18 1.87 12.05 0c.16.14.32.28.49.41c-.64.39-1.32.72-2.03.99c.37.75.8 1.46 1.29 2.14a19.74 19.74 0 0 0 6-3.02c.28-5.08-.47-9.49-3.58-13.46ZM8.31 15.1c-1.18 0-2.14-1.1-2.14-2.45c0-1.35.95-2.45 2.14-2.45c1.2 0 2.15 1.11 2.14 2.45c0 1.35-.95 2.45-2.14 2.45Zm7.38 0c-1.19 0-2.14-1.1-2.14-2.45c0-1.35.95-2.45 2.14-2.45c1.19 0 2.14 1.11 2.14 2.45c0 1.35-.95 2.45-2.14 2.45Z" />
+                  </svg>
+                </a>
               </div>
             </div>
           </section>
