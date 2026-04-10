@@ -856,8 +856,8 @@ export default function PieceOfPie() {
               <div className="rules-grid">
                 <article className="rule">
                   <div className="rule-num">1</div>
-                  <h3>Build for Real Users</h3>
-                  <p>Your project must be a user-facing software product (such as a SaaS app, web2/web3 platform, or tool). It needs to be something real users can directly interact with and use.</p>
+                  <h3>Real Users Can Pay for and Use</h3>
+                  <p>Your project must be a user-facing software product (such as a SaaS app, web2/web3 platform, or tool) that includes a clear payment gate, such as a subscription, one-time purchase, usage-based pricing, etc.</p>
                 </article>
 
                 <article className="rule">
