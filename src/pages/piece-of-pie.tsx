@@ -474,7 +474,7 @@ const css = `
 
   .checklist li { 
     margin: 8px 0; 
-    list-style-type: '🧁 ';
+    list-style-type: '💀 ';
     padding-left: 5px;
   }
 
@@ -758,9 +758,11 @@ export default function PieceOfPie() {
               </div>
               <div className="warning">
                 <strong style={{ color: 'var(--cherry-red)' }}>Automatic disqualification triggers</strong>
-                <p style={{ margin: '8px 0 0', color: '#444' }}>
-                  Missing a required weekly tweet, joining more than one project, or failing to provide verifiable public evidence can disqualify a project.
-                </p>
+                <ul className="checklist">
+                  <li>Missing a required weekly tweet.</li>
+                  <li>Joining more than one project.</li>
+                  <li>Failing to provide verifiable public evidence.</li>
+                </ul>
               </div>
             </div>
 
