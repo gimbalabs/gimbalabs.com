@@ -21,8 +21,7 @@ export default function BountiesPlatformPage() {
             Cardano Bounties Platform
           </h1>
           <p className="mt-4 text-base text-white/80 sm:text-lg">
-            This is a placeholder page. We will build the bounties workflow on
-            this route in a later iteration.
+            This is a placeholder page. Will soon be updated with how to participate in this project.
           </p>
           <Link
             href="/"
