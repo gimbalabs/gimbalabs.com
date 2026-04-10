@@ -909,7 +909,14 @@ export default function PieceOfPie() {
                 <article className="rule">
                   <div className="rule-num">3</div>
                   <h3>Share Evidence & Earn Credits</h3>
-                  <p>You will earn 1 credit for every recorded feedback session you complete, up to a maximum of 15 credits per qualified participant. Evidence must be shared for verification.</p>
+                  <p>
+                    You will earn 1 credit for every recorded feedback session you complete, up to a maximum of 15 credits per qualified participant. Evidence must be shared for verification.{" "}
+                    <a href="https://docs.google.com/document/d/1FPellYxfgDSqw2Qlv6srPxh4DfKfjP20RHKns5OXvqg/edit?tab=t.0" target="_blank" rel="noopener noreferrer">
+                      <strong>
+                        <u>Use this template</u>
+                      </strong>
+                    </a>
+                  </p>
                 </article>
               </div>
             </div>
@@ -922,7 +929,7 @@ export default function PieceOfPie() {
             {/* TIMELINE */}
             <div id="timeline" className="panel">
               <h2 className="section-title">Timeline</h2>
-              <p className="section-sub">Start with enrollment, then keep the momentum with steady build sessions.</p>
+              <p className="section-sub">Start with enrollment, then keep the momentum with steady build sessions and receiving feedback.</p>
 
               <div className="timeline">
                 <div className="timeline-item">
