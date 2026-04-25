@@ -313,11 +313,113 @@ const css = `
     max-width: 70ch;
   }
 
+  .pie-share-overview {
+    display: grid;
+    grid-template-columns: minmax(280px, 0.9fr) 1.1fr;
+    gap: 24px;
+    align-items: start;
+  }
+
+  .pie-pool-card {
+    background: #fffaf0;
+    border: 3px solid var(--border);
+    border-radius: 24px;
+    box-shadow: 8px 8px 0px var(--shadow);
+    padding: 28px;
+  }
+
+  .pie-chart {
+    width: min(320px, 100%);
+    aspect-ratio: 1;
+    margin: 0 auto 24px;
+    border-radius: 50%;
+    background:
+      conic-gradient(
+        #3b82f6 0deg 109deg,
+        #22c55e 109deg 327deg,
+        #ec4899 327deg 349deg,
+        #f59e0b 349deg 360deg
+      );
+    border: 3px solid var(--border);
+    position: relative;
+    box-shadow: 4px 4px 0px var(--shadow);
+  }
+
+  .pie-chart::after {
+    content: '';
+    position: absolute;
+    inset: 21%;
+    background: #fffaf0;
+    border: 3px solid var(--border);
+    border-radius: 50%;
+  }
+
+  .pie-hole {
+    position: absolute;
+    inset: 21%;
+    z-index: 1;
+    display: grid;
+    place-content: center;
+    text-align: center;
+    padding: 16px;
+  }
+
+  .pie-hole strong {
+    display: block;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(1.45rem, 4vw, 2rem);
+    line-height: 1;
+  }
+
+  .pie-hole span {
+    display: block;
+    margin-top: 4px;
+    font-size: 1rem;
+    font-weight: 600;
+  }
+
+  .pie-legend {
+    display: grid;
+    gap: 10px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+  }
+
+  .pie-legend-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .pie-dot {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    border: 2px solid var(--border);
+    border-radius: 50%;
+    flex: 0 0 auto;
+  }
+
+  .pie-dot--builder {
+    background: repeating-linear-gradient(45deg, #3b82f6, #3b82f6 5px, #2563eb 5px, #2563eb 10px);
+  }
+
+  .pie-dot--cardano {
+    background: repeating-linear-gradient(135deg, #22c55e, #22c55e 5px, #16a34a 5px, #16a34a 10px);
+  }
+
+  .pie-dot--user {
+    background: repeating-linear-gradient(0deg, #ec4899, #ec4899 5px, #db2777 5px, #db2777 10px);
+  }
+
+  .pie-dot--feedback {
+    background: repeating-linear-gradient(90deg, #f59e0b, #f59e0b 5px, #d97706 5px, #d97706 10px);
+  }
+
   .pie-share-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     gap: 16px;
-    margin-top: 20px;
   }
 
   .pie-share-card {
@@ -690,6 +792,7 @@ const css = `
   @media (max-width: 900px) {
     .hero,
     .rules-intro,
+    .pie-share-overview,
     .split {
       grid-template-columns: 1fr;
     }
@@ -828,45 +931,63 @@ export default function PieceOfPie() {
             <div className="section-head">
               <div>
                 <h2 className="section-title">How the Pie Gets Shared</h2>
-                <p className="pie-share-intro">Each pie rewards a different kind of contribution: building consistently, proving real-world value, and helping other teams get better.</p>
+                <p className="pie-share-intro">Each pie rewards a different kind of contribution: building consistently, shipping on Cardano, proving real-world value, and helping other teams get better.</p>
               </div>
               <div className="priority-pill availability-pill">33,000 ADA available!</div>
             </div>
 
-            <div className="pie-share-grid">
-              <article className="pie-share-card">
-                <h3>🥧 Builder Pie — 10,000 ADA (equal split)</h3>
-                <p>
-                  Build one project over 12 weeks and share your progress publicly each week.
-                  Earn an equal share of the pie by showing up consistently and shipping something real.
-                </p>
-              </article>
+            <div className="pie-share-overview">
+              <aside className="pie-pool-card" aria-label="Piece of Pie reward pools">
+                <div className="pie-chart" aria-hidden="true">
+                  <div className="pie-hole">
+                    <strong>33,000 ADA</strong>
+                    <span>available</span>
+                  </div>
+                </div>
 
-              <article className="pie-share-card">
-                <h3>🥧 Cardano Pie — 20,000 ADA (equal split)</h3>
-                <p>
-                  If you build on Cardano, you get a share of a much bigger pie.
-                  This replaces the Builder Pie for teams shipping Cardano projects.
-                </p>
-                <span className="pie-share-tag" style={{ marginTop: '8px', display: 'inline-block' }}>Just added</span>
-           
-              </article>
+                <div className="pie-legend">
+                  <div className="pie-legend-item"><span className="pie-dot pie-dot--builder"></span>Builder Pie — 10,000 ADA</div>
+                  <div className="pie-legend-item"><span className="pie-dot pie-dot--cardano"></span>Cardano Pie — 20,000 ADA</div>
+                  <div className="pie-legend-item"><span className="pie-dot pie-dot--user"></span>Real User Pie — 2,000 ADA</div>
+                  <div className="pie-legend-item"><span className="pie-dot pie-dot--feedback"></span>Feedback Pie — 1,000 ADA</div>
+                </div>
+              </aside>
 
-              <article className="pie-share-card">
-                <h3>🥧 Real User Pie — 2,000 ADA (equal split)</h3>
-                <p>
-                  Get at least one real paying user for your project.
-                  Earn an equal share by proving real-world value beyond friends and family.
-                </p>
-              </article>
+              <div className="pie-share-grid">
+                <article className="pie-share-card">
+                  <h3>🥧 Builder Pie — 10,000 ADA (equal split)</h3>
+                  <p>
+                    Build one project over 12 weeks and share your progress publicly each week.
+                    Earn an equal share of the pie by showing up consistently and shipping something real.
+                  </p>
+                </article>
 
-              <article className="pie-share-card">
-                <h3>🥧 Feedback Pie — 1,000 ADA (credit-weighted)</h3>
-                <p>
-                  Help other builders by giving live, recorded feedback sessions.
-                  Earn based on how much useful feedback you contribute.
-                </p>
-              </article>
+                <article className="pie-share-card">
+                  <h3>🥧 Cardano Pie — 20,000 ADA (equal split)</h3>
+                  <p>
+                    If you build on Cardano, you get a share of a much bigger pie.
+                    This replaces the Builder Pie for teams shipping Cardano projects.
+                  </p>
+                  <span className="pie-share-tag" style={{ display: 'inline-block', marginTop: 12 }}>Just added</span>
+             
+                </article>
+
+                <article className="pie-share-card">
+                  <h3>🥧 Real User Pie — 2,000 ADA (equal split)</h3>
+                  <p>
+                    Get at least one real paying user for your project.
+                    Earn an equal share by proving real-world value beyond friends and family.
+                  </p>
+                </article>
+
+                <article className="pie-share-card">
+                  <h3>🥧 Feedback Pie — 1,000 ADA (credit-weighted)</h3>
+                  <p>
+                    Help other builders by giving live, recorded feedback sessions.
+                    Earn based on how much useful feedback you contribute.
+                  </p>
+                </article>
+              </div>
             </div>
           </section>
 
