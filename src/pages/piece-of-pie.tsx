@@ -445,6 +445,39 @@ const css = `
     box-shadow: 3px 3px 0px var(--shadow);
   }
 
+  .draper-dragon-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 14px;
+    padding: 10px 18px;
+    width: min(100%, 260px);
+    min-height: 72px;
+    border: 2px solid var(--border);
+    border-radius: 10px;
+    background: white;
+    box-shadow: 4px 4px 0px var(--shadow);
+    transition: all 0.15s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+
+  .draper-dragon-link:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0px var(--shadow);
+  }
+
+  .draper-dragon-link:focus-visible {
+    outline: 3px solid var(--berry-blue);
+    outline-offset: 3px;
+  }
+
+  .draper-dragon-logo {
+    display: block;
+    width: 100%;
+    max-height: 52px;
+    height: auto;
+    object-fit: contain;
+  }
+
   .pie-share-card h3 {
     margin: 0 0 10px;
     font-family: 'Space Grotesk', sans-serif;
@@ -1071,8 +1104,19 @@ export default function PieceOfPie() {
                     This replaces the Builder Pie for teams shipping Cardano projects.
                     In addition, qualified projects get an opportunity to pitch to the Draper Dragon VC Fund!
                   </p>
-                  <span className="pie-share-tag" style={{ display: 'inline-block', marginTop: 12 }}>Just added</span>
-             
+                  <a
+                    className="draper-dragon-link"
+                    href="https://www.draperdragon.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Visit Draper Dragon"
+                  >
+                    <img
+                      className="draper-dragon-logo"
+                      src="/draper-dragon-logo-cropped.png"
+                      alt="Draper Dragon"
+                    />
+                  </a>
                 </article>
 
                 <article className="pie-share-card">
