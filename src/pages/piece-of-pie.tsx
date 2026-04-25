@@ -1139,7 +1139,7 @@ export default function PieceOfPie() {
                 </div>
                 <div className="mini">
                   <strong>Enrollment</strong>
-                  April 13th - 26th
+                  April 13th - May 3rd
                 </div>
                 <div className="mini">
                   <strong>Repo</strong>
@@ -1476,19 +1476,19 @@ export default function PieceOfPie() {
 
               <div className="timeline">
                 <div className="timeline-item">
-                  <strong>Weeks 1–2 — Enrollment period - April 13th - 26th</strong>
+                  <strong>Weeks 1–2 — Enrollment period - April 13th - May 3rd</strong>
                   Register the project, list every participant, and submit the official public repo.
                 </div>
                 <div className="timeline-item">
-                  <strong>Weeks 1–12 — Build period - April 13th - July 5th</strong>
+                  <strong>Weeks 1–12 — Build period - April 13th - July 12th</strong>
                   Build in public, keep the repo updated, and post at least one public progress tweet every week.
                 </div>
                 <div className="timeline-item">
-                  <strong>Week 12 — Final presentations - June 29th - July 5th</strong>
+                  <strong>Week 12 — Final presentations - July 5th - July 12th</strong>
                   Show the live/recorded demo, public repo, all weekly tweet links, etc. for verification.
                 </div>
                 <div className="timeline-item">
-                  <strong>Post-hackathon — Payouts - July 5th - 12th</strong>
+                  <strong>Post-hackathon — Payouts - July 12th - 18th</strong>
                   Qualified participants receive shares within their pool based on the published rules.
                 </div>
               </div>
