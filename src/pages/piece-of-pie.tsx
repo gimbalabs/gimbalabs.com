@@ -17,6 +17,7 @@ const css = `
     --berry-blue: #2f97c1;
     --matcha-green: #70d6ff;
     --cherry-red: #ff4d6d;
+    --cardano-blue: #0033ad;
   }
 
   * { 
@@ -662,6 +663,10 @@ const css = `
     gap: 20px;
   }
 
+  .rules-grid--featured {
+    grid-template-columns: 1fr;
+  }
+
   .rule-group {
     margin-top: 28px;
     border: 3px solid var(--border);
@@ -672,6 +677,10 @@ const css = `
 
   .rule-group--builder {
     background: rgba(247, 197, 72, 0.22);
+  }
+
+  .rule-group--cardano {
+    background: rgba(255, 149, 91, 0.18);
   }
 
   .rule-group--real-use {
@@ -708,6 +717,13 @@ const css = `
     flex-shrink: 0;
   }
 
+  .rule-group-icon img {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+    display: block;
+  }
+
   .rule {
     background: white;
     border: 3px solid var(--border);
@@ -716,6 +732,18 @@ const css = `
     box-shadow: 5px 5px 0px var(--shadow);
     transition: transform 0.2s;
   }
+
+  .rule--featured {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    column-gap: 18px;
+    min-height: 150px;
+  }
+
+  .rule--featured .rule-num {
+    margin: 0;
+  }
   
   .rule:hover {
     transform: scale(1.02) rotate(1deg);
@@ -723,6 +751,10 @@ const css = `
 
   .rule:nth-child(even):hover {
     transform: scale(1.02) rotate(-1deg);
+  }
+
+  .rule--featured:hover {
+    transform: scale(1.01) rotate(0.25deg);
   }
 
   .rule-num {
@@ -983,6 +1015,11 @@ const css = `
     .tweet-card .hashtag-row {
       grid-column: 1;
       margin-top: 8px;
+    }
+
+    .rule--featured {
+      grid-template-columns: 1fr;
+      align-items: start;
     }
     
     .hero-side {
@@ -1347,6 +1384,24 @@ export default function PieceOfPie() {
                     <div className="tag">@gimbalabs</div>
                   </div>
                 </div>
+              </div>
+            </div>
+
+            <div className="rule-group rule-group--cardano">
+              <h3 className="rule-group-title">
+                <span className="rule-group-icon" aria-hidden="true">
+                  <img src="/cardano-mark.png" alt="" />
+                </span>
+                <span>The Cardano Pie</span>
+              </h3>
+              <div className="rules-grid rules-grid--featured">
+                <article className="rule rule--featured">
+                  <div className="rule-num">1</div>
+                  <div>
+                    <h3>Build on Cardano Mainnet</h3>
+                    <p>Your project must meet every Builder Pie requirement, include payment gating, and deliver real functionality on Cardano mainnet.</p>
+                  </div>
+                </article>
               </div>
             </div>
 
