@@ -282,19 +282,40 @@ const css = `
   }
 
   .availability-pill {
+    display: grid;
+    gap: 4px;
+    width: min(390px, 38vw);
+    padding: 12px 24px;
+    border: 4px solid var(--border);
+    border-radius: 16px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(0.8rem, 1.4vw, 0.95rem);
+    line-height: 1.15;
+    text-align: center;
+    white-space: normal;
+    box-shadow: 7px 7px 0px var(--shadow);
     animation: availabilityBlink 1.15s steps(2, end) infinite;
+  }
+
+  .availability-pill strong,
+  .availability-pill span {
+    display: block;
+  }
+
+  .availability-pill span {
+    font-size: 0.88em;
   }
 
   @keyframes availabilityBlink {
     0%, 48% {
       background: var(--cherry-red);
-      box-shadow: 4px 4px 0px var(--shadow), 0 0 0 4px rgba(255, 77, 109, 0.35);
+      box-shadow: 7px 7px 0px var(--shadow), 0 0 0 4px rgba(255, 77, 109, 0.3);
       transform: rotate(-2deg) scale(1.04);
     }
 
     49%, 100% {
       background: var(--pie-orange);
-      box-shadow: 4px 4px 0px var(--shadow);
+      box-shadow: 7px 7px 0px var(--shadow);
       transform: rotate(-2deg) scale(1);
     }
   }
@@ -306,11 +327,23 @@ const css = `
   }
 
   /* --- PIE SHARES --- */
+  .pie-share-section .section-head {
+    align-items: flex-start;
+    min-height: 108px;
+    padding-right: min(420px, 42vw);
+  }
+
+  .pie-share-section .availability-pill {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+  }
+
   .pie-share-intro {
     margin: 6px 0 0;
     font-size: 1.05rem;
     color: #4a4a4a;
-    max-width: 70ch;
+    max-width: 62ch;
   }
 
   .pie-share-overview {
@@ -531,6 +564,17 @@ const css = `
     border-radius: 22px;
     background: #eef7ff;
     box-shadow: 7px 7px 0px var(--shadow);
+    transition: all 0.15s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+
+  .sponsor-logo-card:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 9px 9px 0px var(--shadow);
+  }
+
+  .sponsor-logo-card:focus-visible {
+    outline: 3px solid var(--berry-blue);
+    outline-offset: 3px;
   }
 
   .sponsor-logo {
@@ -952,6 +996,22 @@ const css = `
     .source-truth-link {
       align-items: flex-start;
     }
+
+    .pie-share-section .section-head {
+      display: grid;
+      gap: 16px;
+      min-height: 0;
+      padding-right: 0;
+    }
+
+    .pie-share-section .availability-pill {
+      position: static;
+      width: calc(100% - 8px);
+      max-width: 390px;
+      padding: 12px 18px;
+      border-radius: 18px;
+      justify-self: start;
+    }
   }
 `;
 
@@ -1062,13 +1122,18 @@ export default function PieceOfPie() {
           <div className="wrap">
 
           {/* PIE SHARES */}
-          <section className="section panel">
+          <section className="section panel pie-share-section">
             <div className="section-head">
               <div>
                 <h2 className="section-title">How the Pie Gets Shared</h2>
                 <p className="pie-share-intro">Each pie rewards a different kind of contribution: building consistently, shipping on Cardano, proving real-world value, and helping other teams get better.</p>
               </div>
-              <div className="priority-pill availability-pill">33,000 ADA available!</div>
+              <div
+                className="priority-pill availability-pill"
+              >
+                <strong>33,000 ADA available!</strong>
+                <span>+ qualified projects can pitch to the Draper Dragon VC Fund</span>
+              </div>
             </div>
 
             <div className="pie-share-overview">
@@ -1141,13 +1206,19 @@ export default function PieceOfPie() {
           {/* SPONSOR SECTION */}
           <section className="section panel sponsor-panel" aria-labelledby="sponsor-title">
             <div className="sponsor-layout">
-              <div className="sponsor-logo-card">
+              <a
+                className="sponsor-logo-card"
+                href="https://cardanofoundation.org/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Visit Cardano Foundation"
+              >
                 <img
                   className="sponsor-logo"
                   src="/cardano-foundation-logo.png"
                   alt="Cardano Foundation"
                 />
-              </div>
+              </a>
 
               <div className="sponsor-content">
                 <span className="sponsor-kicker">Official sponsor</span>
