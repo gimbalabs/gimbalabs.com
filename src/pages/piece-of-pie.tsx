@@ -281,6 +281,30 @@ const css = `
     transform: rotate(-2deg);
   }
 
+  .availability-pill {
+    animation: availabilityBlink 1.15s steps(2, end) infinite;
+  }
+
+  @keyframes availabilityBlink {
+    0%, 48% {
+      background: var(--cherry-red);
+      box-shadow: 4px 4px 0px var(--shadow), 0 0 0 4px rgba(255, 77, 109, 0.35);
+      transform: rotate(-2deg) scale(1.04);
+    }
+
+    49%, 100% {
+      background: var(--pie-orange);
+      box-shadow: 4px 4px 0px var(--shadow);
+      transform: rotate(-2deg) scale(1);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .availability-pill {
+      animation: none;
+    }
+  }
+
   /* --- PIE SHARES --- */
   .pie-share-intro {
     margin: 6px 0 0;
@@ -302,6 +326,21 @@ const css = `
     border-radius: 16px;
     padding: 18px;
     box-shadow: 5px 5px 0px var(--shadow);
+  }
+
+  .pie-share-tag {
+    display: inline-block;
+    margin-bottom: 10px;
+    background: #2f80ed;
+    border: 2px solid var(--border);
+    border-radius: 999px;
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    padding: 4px 10px;
+    text-transform: uppercase;
+    box-shadow: 3px 3px 0px var(--shadow);
   }
 
   .pie-share-card h3 {
@@ -791,7 +830,7 @@ export default function PieceOfPie() {
                 <h2 className="section-title">How the Pie Gets Shared</h2>
                 <p className="pie-share-intro">Each pie rewards a different kind of contribution: building consistently, proving real-world value, and helping other teams get better.</p>
               </div>
-              <div className="priority-pill">13,000 ADA available!</div>
+              <div className="priority-pill availability-pill">33,000 ADA available!</div>
             </div>
 
             <div className="pie-share-grid">
@@ -801,6 +840,16 @@ export default function PieceOfPie() {
                   Build one project over 12 weeks and share your progress publicly each week.
                   Earn an equal share of the pie by showing up consistently and shipping something real.
                 </p>
+              </article>
+
+              <article className="pie-share-card">
+                <h3>🥧 Cardano Pie — 20,000 ADA (equal split)</h3>
+                <p>
+                  If you build on Cardano, you get a share of a much bigger pie.
+                  This replaces the Builder Pie for teams shipping Cardano projects.
+                </p>
+                <span className="pie-share-tag" style={{ marginTop: '8px', display: 'inline-block' }}>Just added</span>
+           
               </article>
 
               <article className="pie-share-card">
