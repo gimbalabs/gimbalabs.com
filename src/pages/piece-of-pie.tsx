@@ -17,6 +17,7 @@ const css = `
     --berry-blue: #2f97c1;
     --matcha-green: #70d6ff;
     --cherry-red: #ff4d6d;
+    --cardano-blue: #0033ad;
   }
 
   * { 
@@ -281,19 +282,178 @@ const css = `
     transform: rotate(-2deg);
   }
 
+  .availability-pill {
+    display: grid;
+    gap: 4px;
+    width: min(390px, 38vw);
+    padding: 12px 24px;
+    border: 4px solid var(--border);
+    border-radius: 16px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(0.8rem, 1.4vw, 0.95rem);
+    line-height: 1.15;
+    text-align: center;
+    white-space: normal;
+    box-shadow: 7px 7px 0px var(--shadow);
+    animation: availabilityBlink 1.15s steps(2, end) infinite;
+  }
+
+  .availability-pill strong,
+  .availability-pill span {
+    display: block;
+  }
+
+  .availability-pill span {
+    font-size: 0.88em;
+  }
+
+  @keyframes availabilityBlink {
+    0%, 48% {
+      background: var(--cherry-red);
+      box-shadow: 7px 7px 0px var(--shadow), 0 0 0 4px rgba(255, 77, 109, 0.3);
+      transform: rotate(-2deg) scale(1.04);
+    }
+
+    49%, 100% {
+      background: var(--pie-orange);
+      box-shadow: 7px 7px 0px var(--shadow);
+      transform: rotate(-2deg) scale(1);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .availability-pill {
+      animation: none;
+    }
+  }
+
   /* --- PIE SHARES --- */
+  .pie-share-section .section-head {
+    align-items: flex-start;
+    min-height: 108px;
+    padding-right: min(420px, 42vw);
+  }
+
+  .pie-share-section .availability-pill {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+  }
+
   .pie-share-intro {
     margin: 6px 0 0;
     font-size: 1.05rem;
     color: #4a4a4a;
-    max-width: 70ch;
+    max-width: 62ch;
+  }
+
+  .pie-share-overview {
+    display: grid;
+    grid-template-columns: minmax(280px, 0.9fr) 1.1fr;
+    gap: 24px;
+    align-items: start;
+  }
+
+  .pie-pool-card {
+    background: #fffaf0;
+    border: 3px solid var(--border);
+    border-radius: 24px;
+    box-shadow: 8px 8px 0px var(--shadow);
+    padding: 28px;
+  }
+
+  .pie-chart {
+    width: min(320px, 100%);
+    aspect-ratio: 1;
+    margin: 0 auto 24px;
+    border-radius: 50%;
+    background:
+      conic-gradient(
+        #3b82f6 0deg 109deg,
+        #22c55e 109deg 327deg,
+        #ec4899 327deg 349deg,
+        #f59e0b 349deg 360deg
+      );
+    border: 3px solid var(--border);
+    position: relative;
+    box-shadow: 4px 4px 0px var(--shadow);
+  }
+
+  .pie-chart::after {
+    content: '';
+    position: absolute;
+    inset: 21%;
+    background: #fffaf0;
+    border: 3px solid var(--border);
+    border-radius: 50%;
+  }
+
+  .pie-hole {
+    position: absolute;
+    inset: 21%;
+    z-index: 1;
+    display: grid;
+    place-content: center;
+    text-align: center;
+    padding: 16px;
+  }
+
+  .pie-hole strong {
+    display: block;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(1.45rem, 4vw, 2rem);
+    line-height: 1;
+  }
+
+  .pie-hole span {
+    display: block;
+    margin-top: 4px;
+    font-size: 1rem;
+    font-weight: 600;
+  }
+
+  .pie-legend {
+    display: grid;
+    gap: 10px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+  }
+
+  .pie-legend-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .pie-dot {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    border: 2px solid var(--border);
+    border-radius: 50%;
+    flex: 0 0 auto;
+  }
+
+  .pie-dot--builder {
+    background: repeating-linear-gradient(45deg, #3b82f6, #3b82f6 5px, #2563eb 5px, #2563eb 10px);
+  }
+
+  .pie-dot--cardano {
+    background: repeating-linear-gradient(135deg, #22c55e, #22c55e 5px, #16a34a 5px, #16a34a 10px);
+  }
+
+  .pie-dot--user {
+    background: repeating-linear-gradient(0deg, #ec4899, #ec4899 5px, #db2777 5px, #db2777 10px);
+  }
+
+  .pie-dot--feedback {
+    background: repeating-linear-gradient(90deg, #f59e0b, #f59e0b 5px, #d97706 5px, #d97706 10px);
   }
 
   .pie-share-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     gap: 16px;
-    margin-top: 20px;
   }
 
   .pie-share-card {
@@ -302,6 +462,54 @@ const css = `
     border-radius: 16px;
     padding: 18px;
     box-shadow: 5px 5px 0px var(--shadow);
+  }
+
+  .pie-share-tag {
+    display: inline-block;
+    margin-bottom: 10px;
+    background: #2f80ed;
+    border: 2px solid var(--border);
+    border-radius: 999px;
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    padding: 4px 10px;
+    text-transform: uppercase;
+    box-shadow: 3px 3px 0px var(--shadow);
+  }
+
+  .draper-dragon-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 14px;
+    padding: 10px 18px;
+    width: min(100%, 260px);
+    min-height: 72px;
+    border: 2px solid var(--border);
+    border-radius: 10px;
+    background: white;
+    box-shadow: 4px 4px 0px var(--shadow);
+    transition: all 0.15s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+
+  .draper-dragon-link:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0px var(--shadow);
+  }
+
+  .draper-dragon-link:focus-visible {
+    outline: 3px solid var(--berry-blue);
+    outline-offset: 3px;
+  }
+
+  .draper-dragon-logo {
+    display: block;
+    width: 100%;
+    max-height: 52px;
+    height: auto;
+    object-fit: contain;
   }
 
   .pie-share-card h3 {
@@ -314,6 +522,114 @@ const css = `
   .pie-share-card p {
     margin: 0;
     color: #4a4a4a;
+  }
+
+  /* --- SPONSOR --- */
+  .sponsor-panel {
+    background:
+      radial-gradient(circle at 12% 18%, rgba(112, 214, 255, 0.45) 0, transparent 26%),
+      radial-gradient(circle at 85% 85%, rgba(247, 197, 72, 0.35) 0, transparent 28%),
+      var(--whipped-cream);
+    overflow: hidden;
+  }
+
+  .sponsor-panel::after {
+    position: absolute;
+    right: -34px;
+    bottom: 24px;
+    transform: rotate(-8deg);
+    padding: 10px 44px;
+    border: 3px solid var(--border);
+    background: var(--crust-yellow);
+    box-shadow: 5px 5px 0px var(--shadow);
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .sponsor-layout {
+    display: grid;
+    grid-template-columns: minmax(260px, 0.72fr) minmax(0, 1fr);
+    gap: 28px;
+    align-items: center;
+  }
+
+  .sponsor-logo-card {
+    display: grid;
+    place-items: center;
+    min-height: 260px;
+    padding: 26px;
+    border: 3px solid var(--border);
+    border-radius: 22px;
+    background: #eef7ff;
+    box-shadow: 7px 7px 0px var(--shadow);
+    transition: all 0.15s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+
+  .sponsor-logo-card:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 9px 9px 0px var(--shadow);
+  }
+
+  .sponsor-logo-card:focus-visible {
+    outline: 3px solid var(--berry-blue);
+    outline-offset: 3px;
+  }
+
+  .sponsor-logo {
+    width: min(100%, 340px);
+    height: auto;
+    display: block;
+  }
+
+  .sponsor-kicker {
+    display: inline-flex;
+    align-items: center;
+    margin-bottom: 12px;
+    padding: 6px 14px;
+    border: 2px solid var(--border);
+    border-radius: 999px;
+    background: var(--matcha-green);
+    box-shadow: 3px 3px 0px var(--shadow);
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .sponsor-title {
+    margin: 0;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(2rem, 4.5vw, 3.2rem);
+    line-height: 1;
+    letter-spacing: -0.04em;
+  }
+
+  .sponsor-copy {
+    margin: 16px 0 0;
+    max-width: 62ch;
+    color: #444;
+    font-size: 1.08rem;
+  }
+
+  .sponsor-highlights {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+    margin-top: 22px;
+    max-width: 720px;
+  }
+
+  .sponsor-highlight {
+    border: 2px solid var(--border);
+    border-radius: 14px;
+    padding: 12px;
+    background: white;
+    box-shadow: 4px 4px 0px var(--shadow);
+    font-weight: 700;
   }
 
   /* --- CORE RULES --- */
@@ -347,6 +663,10 @@ const css = `
     gap: 20px;
   }
 
+  .rules-grid--featured {
+    grid-template-columns: 1fr;
+  }
+
   .rule-group {
     margin-top: 28px;
     border: 3px solid var(--border);
@@ -357,6 +677,10 @@ const css = `
 
   .rule-group--builder {
     background: rgba(247, 197, 72, 0.22);
+  }
+
+  .rule-group--cardano {
+    background: rgba(255, 149, 91, 0.18);
   }
 
   .rule-group--real-use {
@@ -393,6 +717,13 @@ const css = `
     flex-shrink: 0;
   }
 
+  .rule-group-icon img {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+    display: block;
+  }
+
   .rule {
     background: white;
     border: 3px solid var(--border);
@@ -401,6 +732,18 @@ const css = `
     box-shadow: 5px 5px 0px var(--shadow);
     transition: transform 0.2s;
   }
+
+  .rule--featured {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    column-gap: 18px;
+    min-height: 150px;
+  }
+
+  .rule--featured .rule-num {
+    margin: 0;
+  }
   
   .rule:hover {
     transform: scale(1.02) rotate(1deg);
@@ -408,6 +751,10 @@ const css = `
 
   .rule:nth-child(even):hover {
     transform: scale(1.02) rotate(-1deg);
+  }
+
+  .rule--featured:hover {
+    transform: scale(1.01) rotate(0.25deg);
   }
 
   .rule-num {
@@ -651,7 +998,13 @@ const css = `
   @media (max-width: 900px) {
     .hero,
     .rules-intro,
+    .pie-share-overview,
+    .sponsor-layout,
     .split {
+      grid-template-columns: 1fr;
+    }
+
+    .sponsor-highlights {
       grid-template-columns: 1fr;
     }
 
@@ -662,6 +1015,11 @@ const css = `
     .tweet-card .hashtag-row {
       grid-column: 1;
       margin-top: 8px;
+    }
+
+    .rule--featured {
+      grid-template-columns: 1fr;
+      align-items: start;
     }
     
     .hero-side {
@@ -674,6 +1032,22 @@ const css = `
 
     .source-truth-link {
       align-items: flex-start;
+    }
+
+    .pie-share-section .section-head {
+      display: grid;
+      gap: 16px;
+      min-height: 0;
+      padding-right: 0;
+    }
+
+    .pie-share-section .availability-pill {
+      position: static;
+      width: calc(100% - 8px);
+      max-width: 390px;
+      padding: 12px 18px;
+      border-radius: 18px;
+      justify-self: start;
     }
   }
 `;
@@ -765,7 +1139,7 @@ export default function PieceOfPie() {
                 </div>
                 <div className="mini">
                   <strong>Enrollment</strong>
-                  April 13th - 26th
+                  April 13th - May 3rd
                 </div>
                 <div className="mini">
                   <strong>Repo</strong>
@@ -785,39 +1159,112 @@ export default function PieceOfPie() {
           <div className="wrap">
 
           {/* PIE SHARES */}
-          <section className="section panel">
+          <section className="section panel pie-share-section">
             <div className="section-head">
               <div>
                 <h2 className="section-title">How the Pie Gets Shared</h2>
-                <p className="pie-share-intro">Each pie rewards a different kind of contribution: building consistently, proving real-world value, and helping other teams get better.</p>
+                <p className="pie-share-intro">Each pie rewards a different kind of contribution: building consistently, shipping on Cardano, proving real-world value, and helping other teams get better.</p>
               </div>
-              <div className="priority-pill">13,000 ADA available!</div>
+              <div
+                className="priority-pill availability-pill"
+              >
+                <strong>33,000 ADA available!</strong>
+                <span>+ qualified projects can pitch to the Draper Dragon VC Fund</span>
+              </div>
             </div>
 
-            <div className="pie-share-grid">
-              <article className="pie-share-card">
-                <h3>🥧 Builder Pie — 10,000 ADA (equal split)</h3>
-                <p>
-                  Build one project over 12 weeks and share your progress publicly each week.
-                  Earn an equal share of the pie by showing up consistently and shipping something real.
-                </p>
-              </article>
+            <div className="pie-share-overview">
+              <aside className="pie-pool-card" aria-label="Piece of Pie reward pools">
+                <div className="pie-chart" aria-hidden="true">
+                  <div className="pie-hole">
+                    <strong>33,000 ADA</strong>
+                    <span>available</span>
+                  </div>
+                </div>
 
-              <article className="pie-share-card">
-                <h3>🥧 Real User Pie — 2,000 ADA (equal split)</h3>
-                <p>
-                  Get at least one real paying user for your project.
-                  Earn an equal share by proving real-world value beyond friends and family.
-                </p>
-              </article>
+                <div className="pie-legend">
+                  <div className="pie-legend-item"><span className="pie-dot pie-dot--builder"></span>Builder Pie — 10,000 ADA</div>
+                  <div className="pie-legend-item"><span className="pie-dot pie-dot--cardano"></span>Cardano Pie — 20,000 ADA</div>
+                  <div className="pie-legend-item"><span className="pie-dot pie-dot--user"></span>Real User Pie — 2,000 ADA</div>
+                  <div className="pie-legend-item"><span className="pie-dot pie-dot--feedback"></span>Feedback Pie — 1,000 ADA</div>
+                </div>
+              </aside>
 
-              <article className="pie-share-card">
-                <h3>🥧 Feedback Pie — 1,000 ADA (credit-weighted)</h3>
-                <p>
-                  Help other builders by giving live, recorded feedback sessions.
-                  Earn based on how much useful feedback you contribute.
+              <div className="pie-share-grid">
+                <article className="pie-share-card">
+                  <h3>🥧 Builder Pie — 10,000 ADA (equal split)</h3>
+                  <p>
+                    Build one project over 12 weeks and share your progress publicly each week.
+                    Earn an equal share of the pie by showing up consistently and shipping something real.
+                  </p>
+                </article>
+
+                <article className="pie-share-card">
+                  <h3>🥧 Cardano Pie — 20,000 ADA (equal split)</h3>
+                  <p>
+                    If you build on Cardano, you get a share of a much bigger pie.
+                    This replaces the Builder Pie for teams shipping Cardano projects.
+                    In addition, qualified projects get an opportunity to pitch to the Draper Dragon VC Fund!
+                  </p>
+                  <a
+                    className="draper-dragon-link"
+                    href="https://www.draperdragon.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Visit Draper Dragon"
+                  >
+                    <img
+                      className="draper-dragon-logo"
+                      src="/draper-dragon-logo-cropped.png"
+                      alt="Draper Dragon"
+                    />
+                  </a>
+                </article>
+
+                <article className="pie-share-card">
+                  <h3>🥧 Real User Pie — 2,000 ADA (equal split)</h3>
+                  <p>
+                    Get at least one real paying user for your project.
+                    Earn an equal share by proving real-world value beyond friends and family.
+                  </p>
+                </article>
+
+                <article className="pie-share-card">
+                  <h3>🥧 Feedback Pie — 1,000 ADA (credit-weighted)</h3>
+                  <p>
+                    Help other builders by giving live, recorded feedback sessions.
+                    Earn based on how much useful feedback you contribute.
+                  </p>
+                </article>
+              </div>
+            </div>
+          </section>
+
+          {/* SPONSOR SECTION */}
+          <section className="section panel sponsor-panel" aria-labelledby="sponsor-title">
+            <div className="sponsor-layout">
+              <a
+                className="sponsor-logo-card"
+                href="https://cardanofoundation.org/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Visit Cardano Foundation"
+              >
+                <img
+                  className="sponsor-logo"
+                  src="/cardano-foundation-logo.png"
+                  alt="Cardano Foundation"
+                />
+              </a>
+
+              <div className="sponsor-content">
+                <span className="sponsor-kicker">Official sponsor</span>
+                <h2 id="sponsor-title" className="sponsor-title">Backed by Cardano Foundation</h2>
+                <p className="sponsor-copy">
+                  The Cardano Foundation is helping make the Piece Of Pie hackathon possible by sposoring the Cardano Pie and 
+                  giving qualified teams a chance to pitch to the Draper Dragon Venture Fund.
                 </p>
-              </article>
+              </div>
             </div>
           </section>
 
@@ -940,6 +1387,24 @@ export default function PieceOfPie() {
               </div>
             </div>
 
+            <div className="rule-group rule-group--cardano">
+              <h3 className="rule-group-title">
+                <span className="rule-group-icon" aria-hidden="true">
+                  <img src="/cardano-mark.png" alt="" />
+                </span>
+                <span>The Cardano Pie</span>
+              </h3>
+              <div className="rules-grid rules-grid--featured">
+                <article className="rule rule--featured">
+                  <div className="rule-num">1</div>
+                  <div>
+                    <h3>Build on Cardano Mainnet</h3>
+                    <p>Your project must meet every Builder Pie requirement, include payment gating, and deliver real functionality on Cardano mainnet.</p>
+                  </div>
+                </article>
+              </div>
+            </div>
+
             <div className="rule-group rule-group--real-use">
               <h3 className="rule-group-title">
                 <span className="rule-group-icon" aria-hidden="true">🚀</span>
@@ -1011,19 +1476,19 @@ export default function PieceOfPie() {
 
               <div className="timeline">
                 <div className="timeline-item">
-                  <strong>Weeks 1–2 — Enrollment period - April 13th - 26th</strong>
+                  <strong>Weeks 1–2 — Enrollment period - April 13th - May 3rd</strong>
                   Register the project, list every participant, and submit the official public repo.
                 </div>
                 <div className="timeline-item">
-                  <strong>Weeks 1–12 — Build period - April 13th - July 5th</strong>
+                  <strong>Weeks 1–12 — Build period - April 13th - July 19th</strong>
                   Build in public, keep the repo updated, and post at least one public progress tweet every week.
                 </div>
                 <div className="timeline-item">
-                  <strong>Week 12 — Final presentations - June 29th - July 5th</strong>
+                  <strong>Week 12 — Final presentations - July 12th - July 19th</strong>
                   Show the live/recorded demo, public repo, all weekly tweet links, etc. for verification.
                 </div>
                 <div className="timeline-item">
-                  <strong>Post-hackathon — Payouts - July 5th - 12th</strong>
+                  <strong>Post-hackathon — Payouts - July 19th - 26th</strong>
                   Qualified participants receive shares within their pool based on the published rules.
                 </div>
               </div>
