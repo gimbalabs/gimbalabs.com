@@ -457,6 +457,103 @@ const css = `
     color: #4a4a4a;
   }
 
+  /* --- SPONSOR --- */
+  .sponsor-panel {
+    background:
+      radial-gradient(circle at 12% 18%, rgba(112, 214, 255, 0.45) 0, transparent 26%),
+      radial-gradient(circle at 85% 85%, rgba(247, 197, 72, 0.35) 0, transparent 28%),
+      var(--whipped-cream);
+    overflow: hidden;
+  }
+
+  .sponsor-panel::after {
+    position: absolute;
+    right: -34px;
+    bottom: 24px;
+    transform: rotate(-8deg);
+    padding: 10px 44px;
+    border: 3px solid var(--border);
+    background: var(--crust-yellow);
+    box-shadow: 5px 5px 0px var(--shadow);
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .sponsor-layout {
+    display: grid;
+    grid-template-columns: minmax(260px, 0.72fr) minmax(0, 1fr);
+    gap: 28px;
+    align-items: center;
+  }
+
+  .sponsor-logo-card {
+    display: grid;
+    place-items: center;
+    min-height: 260px;
+    padding: 26px;
+    border: 3px solid var(--border);
+    border-radius: 22px;
+    background: #eef7ff;
+    box-shadow: 7px 7px 0px var(--shadow);
+  }
+
+  .sponsor-logo {
+    width: min(100%, 340px);
+    height: auto;
+    display: block;
+  }
+
+  .sponsor-kicker {
+    display: inline-flex;
+    align-items: center;
+    margin-bottom: 12px;
+    padding: 6px 14px;
+    border: 2px solid var(--border);
+    border-radius: 999px;
+    background: var(--matcha-green);
+    box-shadow: 3px 3px 0px var(--shadow);
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .sponsor-title {
+    margin: 0;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(2rem, 4.5vw, 3.2rem);
+    line-height: 1;
+    letter-spacing: -0.04em;
+  }
+
+  .sponsor-copy {
+    margin: 16px 0 0;
+    max-width: 62ch;
+    color: #444;
+    font-size: 1.08rem;
+  }
+
+  .sponsor-highlights {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+    margin-top: 22px;
+    max-width: 720px;
+  }
+
+  .sponsor-highlight {
+    border: 2px solid var(--border);
+    border-radius: 14px;
+    padding: 12px;
+    background: white;
+    box-shadow: 4px 4px 0px var(--shadow);
+    font-weight: 700;
+  }
+
   /* --- CORE RULES --- */
   .rules-intro {
     display: grid;
@@ -793,7 +890,12 @@ const css = `
     .hero,
     .rules-intro,
     .pie-share-overview,
+    .sponsor-layout,
     .split {
+      grid-template-columns: 1fr;
+    }
+
+    .sponsor-highlights {
       grid-template-columns: 1fr;
     }
 
@@ -967,6 +1069,7 @@ export default function PieceOfPie() {
                   <p>
                     If you build on Cardano, you get a share of a much bigger pie.
                     This replaces the Builder Pie for teams shipping Cardano projects.
+                    In addition, qualified projects get an opportunity to pitch to the Draper Dragon VC Fund!
                   </p>
                   <span className="pie-share-tag" style={{ display: 'inline-block', marginTop: 12 }}>Just added</span>
              
@@ -987,6 +1090,28 @@ export default function PieceOfPie() {
                     Earn based on how much useful feedback you contribute.
                   </p>
                 </article>
+              </div>
+            </div>
+          </section>
+
+          {/* SPONSOR SECTION */}
+          <section className="section panel sponsor-panel" aria-labelledby="sponsor-title">
+            <div className="sponsor-layout">
+              <div className="sponsor-logo-card">
+                <img
+                  className="sponsor-logo"
+                  src="/cardano-foundation-logo.png"
+                  alt="Cardano Foundation"
+                />
+              </div>
+
+              <div className="sponsor-content">
+                <span className="sponsor-kicker">Official sponsor</span>
+                <h2 id="sponsor-title" className="sponsor-title">Backed by Cardano Foundation</h2>
+                <p className="sponsor-copy">
+                  The Cardano Foundation is helping make the Piece Of Pie hackathon possible by sposoring the Cardano Pie and 
+                  giving qualified teams a chance to pitch to the Draper Dragon Venture Fund.
+                </p>
               </div>
             </div>
           </section>
