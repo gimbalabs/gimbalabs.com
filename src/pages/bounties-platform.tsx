@@ -32,10 +32,10 @@ export default function BountiesPlatformPage() {
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-3">
             <Link
-              href="https://discord.gg/M3KatBfYZn"
+              href="https://cardanobounties.com"
               className="inline-flex rounded-md bg-white px-4 py-2 font-medium text-slate-950 transition hover:bg-white/90"
             >
-              Join Gimbalabs Discord
+              Explore Cardano Bounties
             </Link>
             <Link
               href="/"
