@@ -17,9 +17,12 @@ export default function YearbookHome() {
           <em>Yearbook</em>
         </h1>
         <div className="yb-hero-footer">
-          <p>
+          <p className="yb-hero-context">
             Twenty-one projects that qualified through public progress and
-            verifiable final work across twelve weeks.
+            verifiable final work across twelve weeks.{" "}
+            <a href="https://www.gimbalabs.com/piece-of-pie">
+              Learn more about Piece of Pie →
+            </a>
           </p>
           <span>April — July 2026</span>
         </div>

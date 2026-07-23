@@ -140,12 +140,20 @@ export const yearbookCss = String.raw`
     margin-top: 3.4rem;
     padding-top: 1.25rem;
   }
-  .yb-hero-footer p {
+  .yb-hero-context {
     font-family: var(--yb-font-display);
     font-size: 1.3rem;
     margin: 0;
     max-width: 34rem;
   }
+  .yb-hero-context a {
+    display: block;
+    margin-top: 0.45rem;
+    text-decoration-color: rgba(48, 35, 51, 0.5);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.22em;
+  }
+  .yb-hero-context a:hover { text-decoration-thickness: 2px; }
   .yb-hero-footer span {
     font-size: 0.76rem;
     font-weight: 700;
