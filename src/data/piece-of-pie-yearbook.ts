@@ -293,8 +293,8 @@ const projectData: Project[] = [
     category: "Data & Analytics",
     builders: ["Juanita Jaramillo Rivillas"],
     summary:
-      "An independent observatory that analyzes blockchain, governance, and decentralized infrastructure with clarity, context, and a critical lens.",
-    tags: ["Research", "Governance", "Blockchain analysis"],
+      "A guided assessment tool that helps organizations explore a business challenge, identify where blockchain may be relevant, and receive a clear initial evaluation.",
+    tags: ["Business analysis", "Blockchain readiness", "Guided assessment"],
     builtOnCardano: false,
     repoUrl: "https://github.com/JuanitaJaramill/cardano-insights-lab",
     appUrl: "https://cil-market-bridge.vercel.app/",
