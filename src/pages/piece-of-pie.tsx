@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Head from 'next/head';
+import Link from 'next/link';
 
 const css = `
   :root {
@@ -1104,6 +1105,7 @@ export default function PieceOfPie() {
             <div>Piece Of Pie Hackathon by Gimbalabs</div>
           </div>
           <nav className="nav">
+            <Link href="/piece-of-pie-yearbook">2026 Yearbook</Link>
             <a href="#rules">Rules</a>
             <a href="#timeline">Timeline</a>
             <a href="#register">Register</a>
