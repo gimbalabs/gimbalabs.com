@@ -1,6 +1,7 @@
+import Image from "next/image";
 import Link from "next/link";
 import {
-  projectInitials,
+  projectScreenshotUrl,
   type Project,
   YEARBOOK_BASE_PATH,
 } from "~/data/piece-of-pie-yearbook";
@@ -17,7 +18,13 @@ export function ProjectCard({ project }: { project: Project }) {
         className="yb-project-card-link"
       >
         <div className="yb-project-card-art" aria-hidden="true">
-          <span>{projectInitials(project.name)}</span>
+          <Image
+            src={projectScreenshotUrl(project.slug)}
+            alt=""
+            width={1280}
+            height={720}
+            sizes="(max-width: 680px) 100vw, (max-width: 900px) 50vw, 33vw"
+          />
         </div>
         <div className="yb-project-card-body">
           <div className="yb-project-card-meta">

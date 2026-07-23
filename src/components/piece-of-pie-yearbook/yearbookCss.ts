@@ -69,6 +69,9 @@ export const yearbookCss = String.raw`
   }
 
   .yb-hero {
+    --yb-blue: #5d82e5;
+    --yb-gold: #e9b92f;
+    --yb-ink: #302333;
     background: var(--yb-blue);
     border: 2px solid var(--yb-ink);
     box-shadow: 10px 10px 0 var(--yb-tomato);
@@ -314,6 +317,13 @@ export const yearbookCss = String.raw`
     overflow: hidden;
   }
   .yb-project-card-art { aspect-ratio: 16 / 9; }
+  .yb-project-card-art img, .yb-profile-art img {
+    display: block;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+    width: 100%;
+  }
   .yb-project-card-art span, .yb-profile-art span {
     color: var(--yb-ink);
     font-family: var(--yb-font-display);
@@ -464,13 +474,6 @@ export const yearbookCss = String.raw`
     background: var(--yb-tomato);
     color: var(--yb-ink);
   }
-  .yb-image-note {
-    background: var(--yb-paper-deep);
-    margin-top: 3rem;
-    padding: 3rem;
-  }
-  .yb-image-note p:last-child { margin-bottom: 0; }
-
   .yb-about-page { margin: 0 3rem; padding: 5rem 0; }
   .yb-about-grid {
     border-top: 1px solid var(--yb-ink);

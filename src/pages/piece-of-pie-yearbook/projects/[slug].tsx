@@ -3,6 +3,7 @@ import type {
   GetStaticProps,
   InferGetStaticPropsType,
 } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { CardanoBadge } from "~/components/piece-of-pie-yearbook/ProjectElements";
 import {
@@ -11,7 +12,7 @@ import {
 } from "~/components/piece-of-pie-yearbook/YearbookLayout";
 import {
   categorySlug,
-  projectInitials,
+  projectScreenshotUrl,
   projects,
   type Project,
   YEARBOOK_BASE_PATH,
@@ -39,7 +40,13 @@ export default function ProjectPage({
     >
       <article className="yb-project-profile">
         <div className="yb-profile-art" aria-hidden="true">
-          <span>{projectInitials(project.name)}</span>
+          <Image
+            src={projectScreenshotUrl(project.slug)}
+            alt=""
+            width={1280}
+            height={720}
+            priority
+          />
         </div>
 
         <div className="yb-profile-heading">
@@ -102,13 +109,6 @@ export default function ProjectPage({
           </a>
         </section>
 
-        <section className="yb-image-note">
-          <p className="yb-eyebrow">Project record</p>
-          <p>
-            Visit the product, repository, final submission, or builder profile
-            using the verified links above.
-          </p>
-        </section>
       </article>
       <YearbookFooter>
         <Link href={`${YEARBOOK_BASE_PATH}/projects`}>← All projects</Link>

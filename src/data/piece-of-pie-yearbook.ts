@@ -383,6 +383,10 @@ export function projectInitials(name: string) {
     .toUpperCase();
 }
 
+export function projectScreenshotUrl(slug: string) {
+  return `/images/piece-of-pie-yearbook/projects/${slug}/screenshot-01.jpg`;
+}
+
 export type ProjectFilter = "all" | "cardano" | "non-cardano";
 
 export function filterProjects(projectList: Project[], filter: ProjectFilter) {
