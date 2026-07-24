@@ -1,6 +1,5 @@
 import Head from "next/head";
 import Image from "next/image";
-import { Button } from "~/components/ui/button";
 import Link from "next/link";
 
 export default function Home() {
@@ -20,29 +19,34 @@ export default function Home() {
           priority
         />
         <div className="relative z-10 flex min-h-screen items-center justify-center md:justify-end">
-          <div className="w-full px-4 md:w-1/2 md:pr-8 lg:pr-16 flex flex-col items-center justify-center h-full">
+          <div className="flex h-full w-full flex-col items-center justify-center px-4 md:w-1/2 md:pr-8 lg:pr-16">
             <h1 className="text-center text-6xl font-bold tracking-tight text-white drop-shadow-2xl sm:text-7xl md:text-8xl">
               Gimbalabs Builder Season
             </h1>
-            <div className="mt-8 flex flex-col items-center w-full">
-              <div className="rounded-lg bg-black/30 py-4 px-10 backdrop-blur-sm">
-                <p className="text-left text-xl sm:text-2xl font-semibold text-white">
+            <div className="mt-8 flex w-full flex-col items-center">
+              <div className="rounded-lg bg-black/30 px-10 py-4 backdrop-blur-sm">
+                <p className="text-left text-xl font-semibold text-white sm:text-2xl">
                   Three ways to participate:
                 </p>
-                <ul className="mt-3 mx-auto flex w-fit flex-col gap-2 text-base sm:text-lg text-white">
+                <ul className="mx-auto mt-3 flex w-fit flex-col gap-2 text-base text-white sm:text-lg">
                   <li>
                     <Link
-                      href="/piece-of-pie"
-                      className="inline-flex items-center gap-2 rounded-md border border-white/35 bg-white/10 px-3 py-1.5 transition hover:bg-white/20 hover:border-white/60 hover:underline"
+                      href="/piece-of-pie-yearbook"
+                      className="group inline-flex max-w-full items-center gap-2 rounded-md border border-amber-300/60 bg-amber-200/10 px-3 py-1.5 shadow-[0_0_16px_rgba(251,191,36,0.22)] transition hover:border-amber-200/90 hover:bg-amber-100/20 hover:shadow-[0_0_22px_rgba(251,191,36,0.34)]"
                     >
                       <span className="inline-flex w-6 justify-center">🥧</span>
-                      <span>Piece of Pie Hackathon</span>
+                      <span className="leading-snug group-hover:underline">
+                        Piece of Pie Hackathon Builder Highlights
+                      </span>
+                      <span className="shrink-0 rounded-full border border-amber-200/80 bg-amber-300/20 px-2 py-0.5 text-[0.65rem] font-bold tracking-[0.16em] text-amber-100 uppercase shadow-[0_0_10px_rgba(252,211,77,0.55)]">
+                        New
+                      </span>
                     </Link>
                   </li>
                   <li>
                     <Link
                       href="/tooling"
-                      className="inline-flex items-center gap-2 rounded-md border border-white/35 bg-white/10 px-3 py-1.5 transition hover:bg-white/20 hover:border-white/60 hover:underline"
+                      className="inline-flex items-center gap-2 rounded-md border border-white/35 bg-white/10 px-3 py-1.5 transition hover:border-white/60 hover:bg-white/20 hover:underline"
                     >
                       <span className="inline-flex w-6 justify-center">🛠️</span>
                       <span>Cardano Community Feedback Tooling</span>
@@ -51,7 +55,7 @@ export default function Home() {
                   <li>
                     <Link
                       href="/bounties-platform"
-                      className="inline-flex items-center gap-2 rounded-md border border-white/35 bg-white/10 px-3 py-1.5 transition hover:bg-white/20 hover:border-white/60 hover:underline"
+                      className="inline-flex items-center gap-2 rounded-md border border-white/35 bg-white/10 px-3 py-1.5 transition hover:border-white/60 hover:bg-white/20 hover:underline"
                     >
                       <span className="inline-flex w-6 justify-center">💰</span>
                       <span>Cardano Bounties Platform</span>
