@@ -320,10 +320,10 @@ const projectData: Project[] = [
   {
     slug: "mosaic-cardano",
     name: "Mosaic Cardano",
-    category: "Media & Creator Economy",
+    category: "Community & Collaboration",
     builders: ["Alfred Itodole", "David Timi"],
     summary:
-      "A creative community platform for book clubs, poetry circles, writing groups, and explorer clubs to make and organize work together.",
+      "A shared workspace where communities develop knowledge, organize ideas, work in the open, and retain a lasting record of every contribution.",
     tags: ["Creative communities", "Writing", "Collaboration"],
     builtOnCardano: true,
     repoUrl: "https://github.com/sirxalfred/mosaic-cardano",
@@ -384,7 +384,9 @@ export function projectInitials(name: string) {
 }
 
 export function projectScreenshotUrl(slug: string) {
-  return `/images/piece-of-pie-yearbook/projects/${slug}/screenshot-01.jpg`;
+  const screenshot =
+    slug === "skillswap" ? "screenshot-02.jpg" : "screenshot-01.jpg";
+  return `/images/piece-of-pie-yearbook/projects/${slug}/${screenshot}`;
 }
 
 export type ProjectFilter = "all" | "cardano" | "non-cardano";
