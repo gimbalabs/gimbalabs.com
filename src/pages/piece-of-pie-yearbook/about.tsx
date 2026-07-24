@@ -36,7 +36,7 @@ export default function AboutPage() {
               </div>
               <div>
                 <dt>Built on Cardano</dt>
-                <dd>14</dd>
+                <dd>15</dd>
               </div>
               <div>
                 <dt>Build period</dt>

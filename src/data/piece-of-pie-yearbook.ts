@@ -310,7 +310,7 @@ const projectData: Project[] = [
     summary:
       "A gamified, AI-powered mobile learning app for Nigerian children, using Hausa, Yoruba, and Igbo as language scaffolds in low-connectivity environments.",
     tags: ["Education", "AI", "Local languages"],
-    builtOnCardano: false,
+    builtOnCardano: true,
     repoUrl: "https://github.com/kamal-ogtl/cogikids",
     appUrl: "https://www.cogniedufy.app/",
     profileUrl: "https://x.com/cedufy",
