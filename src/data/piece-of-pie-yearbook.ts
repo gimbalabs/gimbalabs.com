@@ -232,7 +232,7 @@ const projectData: Project[] = [
     tags: ["Skill exchange", "Learning", "Reputation"],
     builtOnCardano: true,
     repoUrl: "https://github.com/devfreeguy/skill-swap",
-    appUrl: "https://myskillswap.xyz/",
+    appUrl: "https://skillswap-gimbal.vercel.app/",
     profileUrl: "https://x.com/devfreeguy",
     submissionUrl:
       "https://github.com/devfreeguy/skill-swap/blob/main/docs/final-presentation.md",
