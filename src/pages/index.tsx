@@ -62,6 +62,14 @@ export default function Home() {
                     </Link>
                   </li>
                 </ul>
+                <div className="mt-5 border-t border-white/30 pt-4">
+                  <Link
+                    href="/blog"
+                    className="inline-flex items-center gap-2 rounded-md px-3 py-1.5 text-base font-semibold text-white transition hover:bg-white/15 hover:underline"
+                  >
+                    Read the Gimbalabs blog <span aria-hidden="true">→</span>
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
