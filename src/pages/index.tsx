@@ -32,15 +32,10 @@ export default function Home() {
                   <li>
                     <Link
                       href="/piece-of-pie-yearbook"
-                      className="group inline-flex max-w-full items-center gap-2 rounded-md border border-amber-300/60 bg-amber-200/10 px-3 py-1.5 shadow-[0_0_16px_rgba(251,191,36,0.22)] transition hover:border-amber-200/90 hover:bg-amber-100/20 hover:shadow-[0_0_22px_rgba(251,191,36,0.34)]"
+                      className="inline-flex items-center gap-2 rounded-md border border-white/35 bg-white/10 px-3 py-1.5 transition hover:border-white/60 hover:bg-white/20 hover:underline"
                     >
                       <span className="inline-flex w-6 justify-center">🥧</span>
-                      <span className="leading-snug group-hover:underline">
-                        Piece of Pie Hackathon Builder Highlights
-                      </span>
-                      <span className="shrink-0 rounded-full border border-amber-200/80 bg-amber-300/20 px-2 py-0.5 text-[0.65rem] font-bold tracking-[0.16em] text-amber-100 uppercase shadow-[0_0_10px_rgba(252,211,77,0.55)]">
-                        New
-                      </span>
+                      <span>Piece of Pie Hackathon Builder Highlights</span>
                     </Link>
                   </li>
                   <li>
