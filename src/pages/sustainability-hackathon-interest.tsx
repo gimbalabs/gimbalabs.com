@@ -152,36 +152,55 @@ export default function SustainabilityHackathonInterest() {
                   </span>
                 </p>
               </div>
-              <figure className="goal-visual">
-                <div
-                  className="threshold-drawing"
-                  role="img"
-                  aria-label="The goal: repeatable income or support reaches the level needed to cover your costs and income needs."
-                >
-                  <p className="label-text threshold-label">
-                    <span className="text-backing">
-                      Your costs +<br />
-                      income needs
-                    </span>
-                  </p>
-                  <div className="threshold-rule" aria-hidden="true"></div>
-                  <div className="paper cut support-column">
-                    <p>
+              <div className="goal-visual">
+                <figure>
+                  <div
+                    className="threshold-drawing"
+                    role="img"
+                    aria-label="The goal: repeatable income or support reaches the level needed to cover your costs and income needs."
+                  >
+                    <p className="label-text threshold-label">
                       <span className="text-backing">
-                        Repeatable
-                        <br />
-                        income or
-                        <br />
-                        support
+                        Your costs +<br />
+                        income needs
                       </span>
                     </p>
+                    <div className="threshold-rule" aria-hidden="true"></div>
+                    <div className="paper cut support-column">
+                      <p>
+                        <span className="text-backing">
+                          Repeatable
+                          <br />
+                          income or
+                          <br />
+                          support
+                        </span>
+                      </p>
+                    </div>
                   </div>
-                </div>
-                <figcaption>
-                  <span className="label-text text-backing">The goal</span>
-                  <span className="text-backing">Enough to keep running.</span>
-                </figcaption>
-              </figure>
+                  <figcaption>
+                    <span className="label-text text-backing">The goal</span>
+                    <span className="text-backing">
+                      Enough to keep running.
+                    </span>
+                  </figcaption>
+                </figure>
+                <section className="reward" aria-labelledby="reward-title">
+                  <h3 id="reward-title">
+                    <span className="text-backing">
+                      Sustain it. Earn a reward.
+                    </span>
+                  </h3>
+                  <p>
+                    <span className="text-backing">
+                      Meet your agreed financial sustainability target for two
+                      consecutive months to receive{" "}
+                      <span className="number">2,000 ADA</span>, after
+                      verification and while reward funds last.
+                    </span>
+                  </p>
+                </section>
+              </div>
             </section>
 
             <section className="cohort" aria-labelledby="cohort-title">

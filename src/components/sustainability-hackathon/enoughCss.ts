@@ -283,6 +283,8 @@ export const enoughCss = String.raw`
 .enough-interest .support-column p { font: clamp(16px, 1.7vw, 20px)/1.3 var(--font-display); text-transform: uppercase; letter-spacing: .04em; }
 .enough-interest .goal-visual figcaption { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px 16px; margin-top: 24px; font-size: 16px; }
 .enough-interest .goal-visual figcaption > :last-child { color: var(--ink-2); }
+.enough-interest .reward { margin-top: 32px; }
+.enough-interest .reward h3 { margin-bottom: 16px; font-size: 24px; line-height: 1.2; }
 
 .enough-interest .cohort { grid-area: cohort; min-width: 0; }
 .enough-interest .cohort-heading {
